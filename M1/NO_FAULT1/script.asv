@@ -1,0 +1,12 @@
+clear all;
+
+load 'NO_FAULT1.mat'
+%write header to file
+fid = fopen('VER.csv','w'); 
+textHeader = strjoin(VER_label, ',');
+fprintf(fid,'%s\n',textHeader);
+fclose(fid);
+%write cell to csv file
+%writecell(PARM, 'PARM.csv')
+%write data to end of file
+dlmwrite('VER.csv',UNIT,'-append');
