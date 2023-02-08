@@ -1,0 +1,45 @@
+.
+├── M1
+│   ├── FAULT_M1_10
+│   │   └── FAULT_M1_10%.mat
+│   ├── FAULT_M1_5
+│   │   └── FAULT_M1_5%.mat
+│   └── NO_FAULT1
+│       └── NO_FAULT1.mat
+├── M2
+│   ├── FAULT_M2_10
+│   │   └── FAULT_M2_10%.mat
+│   ├── FAULT_M2_5
+│   │   └── FAULT_M2_5%.mat
+│   └── NO_FAULT2
+│       └── NO_FAULT2.mat
+├── M3
+│   ├── FAULT_M3_10
+│   │   └── FAULT_M3_10%.mat
+│   ├── FAULT_M3_5
+│   │   └── FAULT_M3_5%.mat
+│   └── NO_FAULT3
+│       └── NO_FAULT3.mat
+├── M4
+│   ├── FAULT_M4_10
+│   │   └── FAULT_M4_10%.mat
+│   ├── FAULT_M4_5
+│   │   └── FAULT_M4_5%.mat
+│   └── NO_FAULT4
+│       └── NO_FAULT4.mat
+├── M5
+│   ├── FAULT_M5_10
+│   │   └── FAULT_M5_10%.mat
+│   ├── FAULT_M5_5
+│   │   └── FAULT_M5_5%.mat
+│   └── NO_FAULT5
+│       └── NO_FAULT5.mat
+└── M6
+    ├── FAULT_M6_10
+    │   └── FAULT_M6_10%.mat
+    ├── FAULT_M6_5
+    │   └── FAULT_M6_5%.mat
+    └── NO_FAULT6
+        └── NO_FAULT6.mat
+
+24 directories, 18 files
