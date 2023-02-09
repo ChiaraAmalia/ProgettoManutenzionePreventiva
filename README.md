@@ -158,3 +158,45 @@ I valori riportati nelle variabili del parametro RCOU, tabella 1.4, contengono i
 </p>
 
 L'obiettivo nell'utilizzo di questa variabile è verificare che i valori di Roll, Pitch e Yaw siano gli stessi di quelli presenti nella variabile ATT. XKF è una misura aggregata che viene generata da un topic, che si occupa di compiere un filtraggio alla Kalman.
+
+## 2. Strumenti e metodi
+### 2.1 Linguaggi e librerie
+Tutto il codice presente nel progetto è stato scritto in linguaggio Python, sfruttando svariate librerie legate al mondo della rappresentazione dei dati, del calcolo scientifico e della classificazione.
+
+Tra le più importanti possiamo individuare:
+
+- **Pandas**: è uno strumento per la manipolazione e l'analisi dei dati veloce e semplice da utilizzare.
+- **SciPy**: è una libreria open source di algoritmi e strumenti matematici. Contiene moduli per l'ottimizzazione, per l'algebra lineare, l'integrazione, funzioni speciali, FFT, elaborazione di segnali ed immagini, solver ODE e altri strumenti comuni nelle scienze e nell'ingegneria.
+- **Scikit-Learn**: è una libreria open source di apprendimento automatico. Contiene algoritmi di classificazione, regressione e clustering (raggruppamento) e macchine a vettori di supporto, regressione logistica, classificatore bayesiano, k-mean e DBSCAN, ed è progettato per operare con le librerie NumPy e SciPy.
+- **Seaborn**: Seaborn è una libreria in Python utilizzata principalmente per creare grafici statistici.
+
+### 2.2 Strumenti
+Per lo sviluppo di questo progetto, è necessario installare i seguenti tool:
+
+- Installazione di *MATLAB*: per l’estrazione dei file utili ai fini dell’analisi.
+- Installazione della versione *Python 3.10.2*, utilizzata per lo sviluppo del progetto.
+- Installazione delle *librerie Python* utilizzate: Pandas, SciPy, Scikit-Learn, Seaborn.
+- Installazione di *Jupyter Notebook*, per l’elaborazione interattiva in tutti i
+linguaggi di programmazione, utilizzato per l’elaborazione di parti di codice al fine di analizzarne i risultati intermedi.
+
+## 3. Sviluppo del progetto
+L’obiettivo del progetto consiste nell’analizzare i dataset di volo di un drone esarotore in caso di pale nuove e pale usurate (i.e. una pala appositamente danneggiata)
+al fine di discriminarne il funzionamento.
+
+Si è partiti anzitutto andando ad analizzare le variabili e i relativi parametri presenti nel datalog e, essendo questo riportato per ciascun motore del drone, per ognuna della casistiche considerate (nessun guasto, guasto al 5%, guasto al 10%), in un file con estensione .mat, è risultato necessario l’utilizzo di MATLAB per l’estrazione delle variabili di interesse. 
+
+Successivamente, si è proceduto con il calcolo delle feature in Python, con un’importante fase di pre-processing volta al trimming e alla sincronizzazione dei
+tempi con tutte le variabili considerate. Infine, con le feature calcolate nel tempo e in frequenza, si è proceduto con l’analisi vera e propria dei dati, mediante la
+costruzione di un modello in grado di predirre, su una finestra temporale di un secondo, se il drone considerato nel volo presenta un guasto di una certa entit`a
+sopra riportata o meno.
+### 3.1 Generazione dei file
+Inizialmente, il datalog a disposizione era sottoforma di file .mat, quindi manipolabile solamente mediante l’utilizzo dell’ambiente software MATLAB. 
+
+Essendo il datalog, per ciascun volo considerato, una tabella composta da un certo numero di matrici, l’obiettivo era quello di creare tanti file .csv, contenenti ognuno una matrice (ognuna associata a una variabile considerata) con i relativi valori, ognuno con
+la propria intestazione. Per ciascun motore e, di conseguenza, ciascun log di volo fornitoci, abbiamo creato delle cartelle, ognuna contenente il file .mat associato a
+quel log (visibile nella figura 3.1).
+
+<p align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/lista_cartelle.png">
+<caption style="caption-side:bottom">Figura 3.1: Lista delle cartelle che contengono il relativo file .mat</caption>
+<p> 
