@@ -197,6 +197,5 @@ la propria intestazione. Per ciascun motore e, di conseguenza, ciascun log di vo
 quel log (visibile nella figura 3.1).
 
 <p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/lista_cartelle.png" height=200>
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/lista_cartelle.png" height=375></p> 
 <p align="center">Figura 3.1: Lista delle cartelle che contengono il relativo file .mat</p>
-<p> 
