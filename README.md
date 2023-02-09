@@ -79,3 +79,82 @@ I parametri presenti nella tabella 1.1 vengono considerati per poter prendere i 
     </tbody>
 </table> 
 </p>
+L’ Electronic Speed Controller (ESC), tabella 1.2, è un componente fondamentale per il corretto funzionamento di un drone multirotore. La sua funzione è quella di collegare il controllore di volo con i motori consentendo la regolazione della velocità degli stessi. Ogni motore è dotato di un suo ESC perché in un sistema di volo multirotore, ogni motore avrà regimi di rotazione diversi rispetto agli altri. In RPM abbiamo i valori misurati dal sensore di velocità relativo al dato ESC, in CURR abbiamo la corrente di alimentazione dell'ESC. Il drone ha una sensorizzazione ad hoc sul motore.
+
+### 1.3 IMU (Informazioni relative all'accelerometro e giroscopio)
+<p align="center">
+<table>
+<caption style="caption-side:bottom">Tabella 1.3: Informazioni relative all'accelerometro e giroscopio</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <th>Instance</th>
+        <td>Numero di istanza IMU</td>
+    </tr>
+    <tr>
+        <th>GyrX, GyrY, GyrZ</th>
+        <td>Velocità di rotazione grezza del giroscopio in rad/sec</td>
+    </tr>
+    <tr>
+        <th>AccX, AccY, AccZ</th>
+        <td>Valori grezzi dell'accelerometro in m/$s^2$</td>
+    </tr>
+	</tbody>
+</table> 
+</p>
+
+I parametri presenti nella tabella 1.3 vengono presi per tenere in considerazione la velocità angolare del giroscopio e i relativi valori dell'accelerometro. Tale variabile contiene i dati ad alta frequenza, intorno ai 350 Hz.
+
+### 1.4 RCOU (Valori di uscita servo channel da 9 a 14)
+<p align="center">
+<table>
+<caption style="caption-side:bottom">Tabella 1.4: Valori di uscita servo channel da 9 a 14</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <th>C9,...,C14</th>
+        <td>Output canali considerati</td>
+    </tr>
+	</tbody>
+</table> 
+</p>
+
+I valori riportati nelle variabili del parametro RCOU, tabella 1.4, contengono i comandi di Pulse-With Modulation (Modulazione della larghezza di impulso) relativi ai sei motori, in cui i canali attivi sono da C9 a C14.
+### 1.5 XKF (Output stimatore EKF3)
+<p align="center">
+<table>
+<caption style="caption-side:bottom">Tabella 1.5: Informazioni di attitudine</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <th>Roll</th>
+        <td>Rollio stimato</td>
+    </tr>
+    <tr>
+        <th>Pitch</th>
+        <td>Beccheggio stimato</td>
+    </tr>
+    <tr>
+        <th>Yaw</th>
+        <td>Imbardata stimata</td>
+    </tr>
+	</tbody>
+</table> 
+</p>
+
+L'obiettivo nell'utilizzo di questa variabile è verificare che i valori di Roll, Pitch e Yaw siano gli stessi di quelli presenti nella variabile ATT. XKF è una misura aggregata che viene generata da un topic, che si occupa di compiere un filtraggio alla Kalman.
