@@ -199,3 +199,11 @@ quel log (visibile nella figura 3.1).
 <p align="center">
 <img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/lista_cartelle.png" height=375></p> 
 <p align="center">Figura 3.1: Lista delle cartelle che contengono il relativo file .mat</p>
+
+Successivamente, si è proceduto al caricamento in MATLAB di ciascun file, in modo da poterne analizzare le variabili al suo interno. Ciascuna variabile presente
+all’interno di ogni file viene rappresentata per mezzo di una matrice, così come la relativa intestazione, composta da un certo numero di righe ed una sola colonna (figura 3.2).
+
+<p align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/att_mat.png" height=375></p> 
+<p align="center">Figura 3.2: Rappresentazione matriciale ed intestazione relativa alla variabile ATT</p>
+
