@@ -9,7 +9,7 @@
 
 </p>
 
-# 1.Dataset
+## Dataset
 Il dataset è composto da diversi voli, ognuno dei quali in differenti condizioni operative: 
 
 - pala nuova;
@@ -22,11 +22,11 @@ In ciascuna tabella riportata è compreso anche il campo **TimeUS**, indicante l
 
 Per un maggior approfondimento sui parametri utilizzati consultare la documentazione.
 
-# 2.Come eseguire il nostro progetto
+## Come eseguire il nostro progetto
 Per eseguire il nostro progetto sarà sufficiente scaricare il contenuto del repository di GitHub, e poi mandare in run il file *analisi_tutti_15.ipynb*, non è necessario mandare in run gli altri file in quanto i database relativi ai vari voli sono già stati pre-processati e sono presenti nella repository.
 
-# 3.Strumenti e metodi
-## 3.1 Linguaggi e librerie
+## Strumenti e metodi
+### 1 Linguaggi e librerie
 Tutto il codice presente nel progetto è stato scritto in linguaggio Python, sfruttando svariate librerie legate al mondo della rappresentazione dei dati, del calcolo scientifico e della classificazione.
 
 Tra le più importanti possiamo individuare:
@@ -36,7 +36,7 @@ Tra le più importanti possiamo individuare:
 - **Scikit-Learn**: è una libreria open source di apprendimento automatico. Contiene algoritmi di classificazione, regressione e clustering (raggruppamento) e macchine a vettori di supporto, regressione logistica, classificatore bayesiano, k-mean e DBSCAN, ed è progettato per operare con le librerie NumPy e SciPy.
 - **Seaborn**: Seaborn è una libreria in Python utilizzata principalmente per creare grafici statistici.
 
-## 3.2 Strumenti
+### 2 Strumenti
 Per lo sviluppo di questo progetto, è necessario installare i seguenti tool:
 
 - Installazione di *MATLAB*: per l’estrazione dei file utili ai fini dell’analisi.
@@ -45,7 +45,7 @@ Per lo sviluppo di questo progetto, è necessario installare i seguenti tool:
 - Installazione di *Jupyter Notebook*, per l’elaborazione interattiva in tutti i
 linguaggi di programmazione, utilizzato per l’elaborazione di parti di codice al fine di analizzarne i risultati intermedi.
 
-# 4.Sviluppo del progetto
+## Sviluppo del progetto
 L’obiettivo del progetto consiste nell’analizzare i dataset di volo di un drone esarotore in caso di pale nuove e pale usurate (i.e. una pala appositamente danneggiata) al fine di discriminarne il funzionamento.
 
 Si è partiti anzitutto andando ad analizzare le variabili e i relativi parametri presenti nel datalog e, essendo questo riportato per ciascun motore del drone, per ognuna della casistiche considerate (nessun guasto, guasto al 5%, guasto al 10%), in un file con estensione .mat, è risultato necessario l’utilizzo di MATLAB per l’estrazione delle variabili di interesse. 
@@ -54,7 +54,7 @@ Successivamente, si è proceduto con il calcolo delle feature in Python, con un�
 tempi con tutte le variabili considerate. Infine, con le feature calcolate nel tempo e in frequenza, si è proceduto con l’analisi vera e propria dei dati, mediante la costruzione di un modello in grado di predirre, su una finestra temporale di un secondo, se il drone considerato nel volo presenta un guasto di una certa entità
 sopra riportata o meno.
 
-## 4.1 Generazione dei file
+### 1 Generazione dei file
 Inizialmente, il datalog a disposizione era sottoforma di file .mat, quindi manipolabile solamente mediante l’utilizzo dell’ambiente software MATLAB. 
 
 Essendo il datalog, per ciascun volo considerato, una tabella composta da un certo numero di matrici, l’obiettivo era quello di creare tanti file .csv, contenenti ognuno una matrice (ognuna associata a una variabile considerata) con i relativi valori, ognuno con
@@ -92,15 +92,15 @@ Ciascun file si presenta nel modo riportato in Figura 3.5:
 <img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/esempio_csv.png" height=375></p> 
 <p align="center">Figura 3.5: File csv generato</p>
 
-## 4.2 Costruzione del dataset
+### 2 Costruzione del dataset
 Avendo ottenuto i vari file .csv relativi a ciascun volo, procediamo con il calcolo delle feature ai fini della classificazione.
 All’interno di ciascuna cartella in cui sono contenuti i file csv relativi al volo considerato, è presente un file con estensione .ipynb che ci consente di costruire il dataset finale contenente tutte le feature.
-### 4.2.1 Trimming del datalog
+#### 2.1 Trimming del datalog
 Tutti le acquisizioni effettuate nei vari istanti di tempo partono dal momento in cui il drone è stato ”armato” ovvero nel momento in cui le pale dei vari motori iniziano a ruotare. E' risultato quindi necessario andare ad eliminare la parte iniziale e finale in cui il drone è fermo. Sono parecchie le acquisizioni con un valore costante che corrisponde al minimo, ovvero quando il drone viene acceso ma gli si dà una potenza minima che non gli permette di decollare. Andiamo quindi a togliere tutti quei valori prima di arrivare ad una potenza e quindi un’altezza minima e successivi al momento in cui il drone sta per atterrare, andanndo quindi a prendere solamente l’arco di tempo in cui il drone sta volando.
-### 4.2.2 Sincronizzazione dei tempi
+#### 2.2 Sincronizzazione dei tempi
 In questa fase, avendo ottenuto tutte le variabili e i relativi parametri utili ai fini delle analisi, è risultato necessario, per poter unire tutte le tabelle, effettuare una sincronizzazione dei tempi.
 
-##### Unione delle tabelle
+###### Unione delle tabelle
 Il primo passo di questa fase è stato unire tutte le tabelle, risultanti dalle precedenti operazioni, per fare ciò abbiamo sfruttato il metodo di pandas *merge_ordered()*, progettata per dati ordinati come dati di serie temporali e che semplicemente esegue l'unione di questi dati (mantenendo l'ordine).
 
 In seguito abbiamo proceduto andando ad imputare i valori mancanti e per fare ciò abbiamo utilizzato un altro metodo di pandas, ovvero *DataFrame.fillna()* che permette di andare a riempire i valori mancanti con il metodo specificato tra le parentesi.
@@ -109,7 +109,7 @@ Come è possibile vedere nel codice riportato sotto, noi abbiamo applicato tale 
 
 Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincronizzazione dei tempi del volo, impostando a 0 $\mu$s la prima riga della tabella, indicando il fatto che il volo inizi in quell'istante di tempo, andando quindi a sottrarre a ciascuna riga, relativamente alla colonna dei tempi, il vaore della prima. 
 
-##### Sincronizzazione con 350 misurazioni al secondo
+###### Sincronizzazione con 350 misurazioni al secondo
 Essendo noto il fatto che il campionamento avveniva con una frequenza pari a: $f_c=350$, ma che i sensori potevano in realta campionare a tempi leggermente diversi, si è forzatamente sincronizzato il dataset per fare in modo che le misurazzioni fossero effettivamente 350 al secondo.
 
 Quindi noto che il tempo di campionamento fosse pari a: $T=1/f_c=1/350=0.002857s=2857\mu s$, utilizzando un semplice ciclo for, si è creato un dataframe con i tempi in modo tale che tra le varie misurazioni trascorressero veramente $2857\mu s$.
@@ -120,7 +120,7 @@ A questo punto trasformiamo la colonna dei tempi, espressa in $\mu$s, in un form
 
 Questa trasformazione la effettuiamo per verificare se effettivamente vi sono $2857 \mu s$ tra una misurazione e l'altra, e per rendere più leggibile la variabile temporale.
 
-### 4.2.3 Estrazione delle feature nel tempo e in frequenza
+#### 2.3 Estrazione delle feature nel tempo e in frequenza
 Dopo aver verificato se la sincronizzazione dei tempi è andata a buon fine, si è proceduto con il calcolo delle feature nel tempo ed in frequenza per vedere se queste sono significanti.
 
 Come prima cosa si è dovuta definire una funzione per il calcolo del Root Mean Square in quanto essa non era già implementata in pandas.
@@ -141,18 +141,18 @@ Successivamente si è proceduto creando una funzione che per ogni secondo andass
 
 Per fare ciò si è utilizzata la funzione per il calcolo del root mean square introdotta in precedenza, e funzioni preimpostate per il calcolo della altre feature, poi si è trasformata la serie temporale in frequenza e si sono trovate le features in questo dominio.
 
-##### Creazione del dataset
+###### Creazione del dataset
 In questa fase si è proceduto con l'applicazione della funzione precedentemente definita a tutte le variabili presenti all'interno della tabella sincronizzata.
 
 Andiamo adesso ad effettuare un merge di tutte le tabelle ottenute dall'applicazione della funzione, sulla base della colonna dei tempi. Procediamo quindi con l'inserimento della colonna relativa al guasto associando, per quel datalog di volo che stiamo considerando, il guasto corrente.
 
 Il dataset contenente tutte le feature calcolate viene quindi convertito in formato .csv, per essere poi analizzato nella fase successiva
 
-## 4.3 Classificazione
+### 3 Classificazione
 Dopo aver ottenuto, per ciascun volo considerato, un file .csv ad esso associato contenente tutte le feature calcolate relativamente a quel volo, procediamo con la fase di addestramento di un modello in grado di predirre la classe di guasto di un volo, a partire dall'analisi del valori delle feature calcolate su una finestra temporale di un secondo.
 
 
-### 4.3.1 Bilanciamento del dataset
+#### 3.1 Bilanciamento del dataset
 Prima di procedere con la fase di classificazione, ci siamo resi conto che il dataset
 era fortemente sbilanciato, ovvero il numero di righe relative ad un guasto del 10%
 erano molte di pi`u rispetto alle righe relative a droni senza guasto, ovvero i dati
@@ -166,7 +166,7 @@ Sulla base di questi risultati, si è valutato quindi di effettuare un oversampl
 
 A questo punto, tutte e tre le categorie di guasto conterranno 541 elementi, potendo
 quindi procedere con il passo successivo di selezione delle feature pi`u importanti.
-### 4.3.2 Selezione delle feature
+#### 3.2 Selezione delle feature
 Per scegliere le feature migliori è risultato importante andare ad utilizzare un
 particolare metodo, in modo da poter prendere le feature più adatte su cui fare
 classificazione. Abbiamo deciso di utilizzare come tecnica statistica l’analisi della
@@ -178,7 +178,7 @@ gruppo di appartenenza.
 Entrando nel dettaglio, abbiamo deciso di utilizzare l’analisi delle varianze in modo
 da poter individuare, sui dati a disposizione, le prime 15 feature più importanti.
 
-### 4.3.3 Separazione del dataset
+#### 3.3 Separazione del dataset
 Dopo aver individuato le feature pi`u rilevanti, mediante il metodo ANOVA, pro-
 cediamo con lo split del dataset in training e test, definendo una dimensione
 dell’insieme dei dati di training pari all’80% dell’insieme dei dati originali mentre
@@ -187,7 +187,7 @@ per il test pari al 20%.
 In questo modo l’insieme di dati di training sar`a composto da 1298 elementi mentre,
 l’insieme dei dati di test sarà composto da 325 elementi.
 
-### 4.3.4 Definizione dei classificatori
+#### 3.4 Definizione dei classificatori
 Per effettuare quindi la classificazione, abbiamo deciso di utilizzare sei tipologie di
 classificatori, in modo da poter analizzare i diversi approcci alla classificazione per
 ciascun modello ottenuto. Tra i classificatori utilizzati abbiamo:
@@ -199,12 +199,12 @@ ciascun modello ottenuto. Tra i classificatori utilizzati abbiamo:
  - Multi Layer Perceptron: è un modello di rete neurale artificiale che mappa insiemi di dati in ingresso in un insieme di dati in uscita appropriati.
  - Stochastic Gradient Descent: implementa dei modelli lineari regolarizzati con l’apprendimento della discesa stocastica del gradiente. Il gradiente della perdita viene stimato ad ogni campione e il modello viene aggiornato con learning rate.
 
-### 4.3.5 Addestramento e validazione
+#### 3.5 Addestramento e validazione
 Dopo aver definito tutte le specifiche utili al fine della classificazione, procediamo
 con l’addestramento e la validazione dei modelli ottenuti, con successiva valuta-
 zione dei risultati ottenuti.
 
-### 4.3.6 Matrici di confusione
+#### 3.6 Matrici di confusione
 Con i risultati precedentemente ottenuti si `e proceduto con il plotting delle matrici
 di confusione.
 
@@ -216,11 +216,11 @@ dati che sono stati correttamente assegnati alla relativa classe di appartenenza
 di fuori della diagonale principale sono presenti tutti quei dati che non sono stati
 assegnati alla corretta classe di appartenenza.
 
-### 4.3.7 Cross Validation Scores
+#### 3.7 Cross Validation Scores
 Per analizzare meglio i risultati ottenuti con la cross-validation, siamo andati ad
 utilizzare un grafico per l’analisi dell’accuratezza media ed errore risultante dalla
 cross-validation. In questo modo possiamo visualizzare l’accuratezza media di ciascun classificatore (mediante un grafico a barre) ed il relativo errore, calcolato mediante deviazione standard.
-### 4.3.8 Report Classificazione
+#### 3.8 Report Classificazione
 Ulteriori valori che siamo andati a calcolare sono quelli relativi ad un report sulla
 classificazione.
 Per ciascun classificatore, ci siamo andati a calcolare:
@@ -234,7 +234,7 @@ Per ciascun classificatore, ci siamo andati a calcolare:
  - **weighted avg**: è la media pesata, ovvero ciascun elemento viene moltiplicato per un peso durante il calcolo della media
 
 
-# 5.Risultati
+## Risultati
 
 # Autori
 
