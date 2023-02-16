@@ -1,15 +1,15 @@
 # Rilevamento usura pala a partire dall’analisi del log di volo di un drone esarotore
 <p align="center">
-<a href="#1. Dataset">Il dataset</a>&nbsp•
-<a href="#2. Come eseguire il nostro progetto">Come eseguire il nostro progetto</a>&nbsp•
-<a href="#3. Strumenti e metodi">Strumenti e metodi</a>&nbsp•
-<a href="#4. Sviluppo del progetto">Sviluppo</a>&nbsp•
-<a href="#5. Risultati">Risultati</a>&nbsp•
+<a href="#1.Dataset">Il dataset</a>&nbsp•
+<a href="#2.Come eseguire il nostro progetto">Come eseguire il nostro progetto</a>&nbsp•
+<a href="#3.Strumenti e metodi">Strumenti e metodi</a>&nbsp•
+<a href="#4.Sviluppo del progetto">Sviluppo</a>&nbsp•
+<a href="#5.Risultati">Risultati</a>&nbsp•
 <a href="#Autori">Autori</a>
 
 </p>
 
-## 1. Dataset
+## 1.Dataset
 Il dataset è composto da diversi voli, ognuno dei quali in differenti condizioni operative: 
 
 - pala nuova;
@@ -22,10 +22,10 @@ In ciascuna tabella riportata è compreso anche il campo **TimeUS**, indicante l
 
 Per un maggior approfondimento sui parametri utilizzati consultare la documentazione.
 
-## 2. Come eseguire il nostro progetto
+## 2.Come eseguire il nostro progetto
 Per eseguire il nostro progetto sarà sufficiente scaricare il contenuto del repository di GitHub, e poi mandare in run il file *analisi_tutti_15.ipynb*, non è necessario mandare in run gli altri file in quanto i database relativi ai vari voli sono già stati pre-processati e sono presenti nella repository.
 
-## 3. Strumenti e metodi
+## 3.Strumenti e metodi
 ### 3.1 Linguaggi e librerie
 Tutto il codice presente nel progetto è stato scritto in linguaggio Python, sfruttando svariate librerie legate al mondo della rappresentazione dei dati, del calcolo scientifico e della classificazione.
 
@@ -45,7 +45,7 @@ Per lo sviluppo di questo progetto, è necessario installare i seguenti tool:
 - Installazione di *Jupyter Notebook*, per l’elaborazione interattiva in tutti i
 linguaggi di programmazione, utilizzato per l’elaborazione di parti di codice al fine di analizzarne i risultati intermedi.
 
-## 4. Sviluppo del progetto
+## 4.Sviluppo del progetto
 L’obiettivo del progetto consiste nell’analizzare i dataset di volo di un drone esarotore in caso di pale nuove e pale usurate (i.e. una pala appositamente danneggiata) al fine di discriminarne il funzionamento.
 
 Si è partiti anzitutto andando ad analizzare le variabili e i relativi parametri presenti nel datalog e, essendo questo riportato per ciascun motore del drone, per ognuna della casistiche considerate (nessun guasto, guasto al 5%, guasto al 10%), in un file con estensione .mat, è risultato necessario l’utilizzo di MATLAB per l’estrazione delle variabili di interesse. 
@@ -234,7 +234,7 @@ Per ciascun classificatore, ci siamo andati a calcolare:
  - **weighted avg**: è la media pesata, ovvero ciascun elemento viene moltiplicato per un peso durante il calcolo della media
 
 
-## 5 Risultati
+## 5.Risultati
 
 # Autori
 
