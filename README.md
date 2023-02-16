@@ -238,7 +238,6 @@ Per ciascun classificatore, ci siamo andati a calcolare:
 
 # Autori
 
-----------
 :woman_technologist: [Chiara Amalia Caporusso](https://github.com/ChiaraAmalia) 
 
 :woman_technologist: [Margherita Galeazzi](https://github.com/MargheritaGaleazzi)
