@@ -1,10 +1,10 @@
 # Rilevamento usura pala a partire dall’analisi del log di volo di un drone esarotore
 <p align="center">
-<a href="#1.Dataset">Il dataset</a>&nbsp•
-<a href="#2.Come eseguire il nostro progetto">Come eseguire il nostro progetto</a>&nbsp•
-<a href="#3.Strumenti e metodi">Strumenti e metodi</a>&nbsp•
-<a href="#4.Sviluppo del progetto">Sviluppo</a>&nbsp•
-<a href="#5.Risultati">Risultati</a>&nbsp•
+<a href="##1.Dataset">Il dataset</a>&nbsp•
+<a href="##2.Come eseguire il nostro progetto">Come eseguire il nostro progetto</a>&nbsp•
+<a href="##3.Strumenti e metodi">Strumenti e metodi</a>&nbsp•
+<a href="##4.Sviluppo del progetto">Sviluppo</a>&nbsp•
+<a href="##5.Risultati">Risultati</a>&nbsp•
 <a href="#Autori">Autori</a>
 
 </p>
