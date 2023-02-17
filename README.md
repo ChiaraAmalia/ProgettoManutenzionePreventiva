@@ -240,7 +240,7 @@ Avendo riportato tutti i passaggi relativi allo sviluppo del nostro progetto, pr
 ### 1 Logistic Regression
 Con il Logistic Regression riusciamo ad ottenere un’accuratezza pari all’88%. Il modello ottenuto è in grado di effettuare una separazione distinta delle classi, soprattutto è capace a distinguere il volo relativo ad un drone senza guasto da un volo con guasto al 10%. Maggiore difficoltà viene riscontrata nella distinzione tra un volo relativo ad un drone senza guasto da un drone con guasto al 5%. Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
 <p align="center">
-<table border="0">
+<table border="0", align="center">
 <tr>
 <td>0.89230769</td>
 <td>0.88923077</td>
