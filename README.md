@@ -235,6 +235,29 @@ Per ciascun classificatore, ci siamo andati a calcolare:
 
 
 ## Risultati
+Avendo riportato tutti i passaggi relativi allo sviluppo del nostro progetto, procediamo con il mostrare i risultati ottenuti, dall’addestramento dei diversi classificatori utilizzati. Procederemo con riportare il risultato dell’accuratezza semplice, calcolata dividendo il dataset in training e test, successivamente procederemo con i risultati dell’accuratezza ottenuti mediante cross-validation, con un numero di fold pari a 5. Per ciascun classificatore verrà riportata anche la relativa curva ROC, mostrando la curva per ciascuna classe predetta. Riporteremo quindi i risultati numerici, rappresentati mediante matrici di confusione, relativi alla predizione ottenuta applicando i dati di test al modello e report sulla classificazione. Verrà riportato infine un grafico a barre rappresentante gli score della cross-validation, con accuratezza media e deviazione standard.
+
+### 1 Logistic Regression
+Con il Logistic Regression riusciamo ad ottenere un’accuratezza pari all’88%. Il modello ottenuto è in grado di effettuare una separazione distinta delle classi, soprattutto è capace a distinguere il volo relativo ad un drone senza guasto da un volo con guasto al 10%. Maggiore difficoltà viene riscontrata nella distinzione tra un volo relativo ad un drone senza guasto da un drone con guasto al 5%. Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
+<p align="center">
+<table border="0">
+<tr>
+<td>0.89230769</td>
+<td>0.88923077</td>
+<td>0.84923077</td>
+<td>0.93518519</td>
+<td>0.87037037</td>
+</table>
+</p>
+Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le accuratezze che otteniamo sono accettabili e relativamente alte, ma anche conformi al risultato ottenuto dal calcolo dell’accuratezza semplice.
+
+#### 1.1 Curva ROC
+Per quanto riguarda il Logistic Regression, la curva ROC ottenuta è riportata in
+figura 4.1
+
+<p align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_logreg.png" height=280></p> 
+<p align="center">Figura 4.1: Curva ROC Logistic Regression</p>
 
 # Autori
 
