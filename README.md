@@ -228,8 +228,8 @@ Per ciascun classificatore, ci siamo andati a calcolare:
  - **precision**: è il numero di elementi correttamente classificati di ogni classe rispetto al numero di elementi predetti di quella classe
  - **recall**: è il numero di elementi correttamente classificati di ogni classe rispetto al numero di elementi veri della classe
  - **f1-score**: è una combinazione di precision e recall
- - **supporto**: è la rilevanza statistica
- - **accuratezza**: corrisponde numeri di elementi correttamente classificati di quella classe rispetto al numero totale di elementi di quella classe
+ - **supporto**: è il numero di dati di test utilizzati nella predizione
+ - **accuratezza**: è l'accuratezza che si ottiene dalla divisione del dataset in training e test, andando a vedere quindi quanti elementi di quella classe sono stati classificati, rispetto al numero totale di elementi di quella classe
  - **macro avg**: è il calcolo della media riportando il problema della classificazione ad una classificazione binaria
  - **weighted avg**: è la media pesata, ovvero ciascun elemento viene moltiplicato per un peso durante il calcolo della media
 
