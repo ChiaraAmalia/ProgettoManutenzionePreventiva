@@ -254,7 +254,7 @@ Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le
 #### 1.1 Curva ROC
 Per quanto riguarda il Logistic Regression, la curva ROC ottenuta è riportata in
 figura 4.1
-Come possiamo vedere la curva migliore è quella relativa alla classe 2 (ovvero riferito a volo con guasto al 10%) che abbraccia perfettamente l’angolo in alto a sinistra del grafico riportato, con AUC pari a 1. Anche la curva relativa alla classe 0 (nessun guasto) è buona con un’AUC pari a 0.96. Pi`u bassa `e invece la curva, e rispettivo AUC, relativamente al volo con guasto al 5%.
+Come possiamo vedere la curva migliore è quella relativa alla classe 2 (ovvero riferito a volo con guasto al 10%) che abbraccia perfettamente l’angolo in alto a sinistra del grafico riportato, con AUC pari a 1. Anche la curva relativa alla classe 0 (nessun guasto) è buona con un’AUC pari a 0.96. Più bassa è invece la curva, e rispettivo AUC, relativamente al volo con guasto al 5%.
 
 #### 1.2 Matrice di confusione
 Riportiamo in figura 4.2 i risultati numerici della predizione mediante matrice di confusione, applicando l’insieme dei dati di test al modello addestrato.
@@ -275,8 +275,8 @@ Figura 4.2: Matrice di confusione Logistic Regression
 Come possiamo vedere, il modello è in grado di effettuare una netta distinzione tra dati appartenenti alla classe 0 (nessun guasto) e dati appartenenti alla classe 2 (guasto al 10%). Maggiore difficoltà è riscontrata nell’individuazione dei dati appartenenti alla classe 1 (guasto al 10%).
 
 ### 2 Decision Tree
-Con il Decision Tree riusciamo ad ottenere un’accuratezza pari al 65%. In questo caso l’accuratezza classica risulta essere di molto pi`u bassa rispetto al classificatore
-precedente. E' in grado di distinguere un volo con drone senza guasto da un volo con drone con guasto al 10% ma, trova estrema difficolt`a nell’individuare i voli relativi a droni con guasto al 5%. Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
+Con il Decision Tree riusciamo ad ottenere un’accuratezza pari al 65%. In questo caso l’accuratezza classica risulta essere di molto più bassa rispetto al classificatore
+precedente. E' in grado di distinguere un volo con drone senza guasto da un volo con drone con guasto al 10% ma, trova estrema difficoltà nell’individuare i voli relativi a droni con guasto al 5%. Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
 
 <p align="center">
 <table border="0", align="center">
