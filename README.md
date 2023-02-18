@@ -393,7 +393,7 @@ in figura 4.7.
 Come possiamo osservare dal grafico riportato, la curva ROC relativa alla classe 2
 abbraccia l’angolo in alto a sinistra, a ragion del fatto che il classificatore è in grado
 di distinguere correttamente gli elementi classe 2 dagli altri elementi appartenenti
-alle altre classi, con un valore AUC pari allo 9.99. Le altre due classi hanno una
+alle altre classi, con un valore AUC pari allo 0.99. Le altre due classi hanno una
 curva ROC decisamente più bassa rispetto alla precedente, relative al fatto che il
 classificatore fa difficoltà nella distinzione dei dati. La curva ROC della classe 0 è
 leggermente migliore della curva ROC della classe 1 con un AUC di 0.75 mentre
