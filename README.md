@@ -200,8 +200,7 @@ ciascun modello ottenuto. Tra i classificatori utilizzati abbiamo:
 
 #### 3.5 Addestramento e validazione
 Dopo aver definito tutte le specifiche utili al fine della classificazione, procediamo
-con l’addestramento e la validazione dei modelli ottenuti, con successiva valuta-
-zione dei risultati ottenuti.
+con l’addestramento e la validazione dei modelli ottenuti, con successiva valutazione dei risultati ottenuti.
 
 #### 3.6 Matrici di confusione
 Con i risultati precedentemente ottenuti si è proceduto con il plotting delle matrici
