@@ -179,8 +179,7 @@ Entrando nel dettaglio, abbiamo deciso di utilizzare l’analisi delle varianze 
 da poter individuare, sui dati a disposizione, le prime 15 feature più importanti.
 
 #### 3.3 Separazione del dataset
-Dopo aver individuato le feature più rilevanti, mediante il metodo ANOVA, pro-
-cediamo con lo split del dataset in training e test, definendo una dimensione
+Dopo aver individuato le feature più rilevanti, mediante il metodo ANOVA, procediamo con lo split del dataset in training e test, definendo una dimensione
 dell’insieme dei dati di training pari all’80% dell’insieme dei dati originali mentre
 per il test pari al 20%.
 
