@@ -274,6 +274,221 @@ Figura 4.2: Matrice di confusione Logistic Regression
 
 Come possiamo vedere, il modello è in grado di effettuare una netta distinzione tra dati appartenenti alla classe 0 (nessun guasto) e dati appartenenti alla classe 2 (guasto al 10%). Maggiore difficoltà è riscontrata nell’individuazione dei dati appartenenti alla classe 1 (guasto al 10%).
 
+### 2 Decision Tree
+Con il Decision Tree riusciamo ad ottenere un’accuratezza pari al 65%. In questo caso l’accuratezza classica risulta essere di molto pi`u bassa rispetto al classificatore
+precedente. E' in grado di distinguere un volo con drone senza guasto da un volo con drone con guasto al 10% ma, trova estrema difficolt`a nell’individuare i voli relativi a droni con guasto al 5%. Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
+
+<p align="center">
+<table border="0", align="center">
+<tr>
+<td>0.66153846</td>
+<td>0.65846154</td>
+<td>0.65538462</td>
+<td>0.65123457</td>
+<td>0.66049383</td>
+</table>
+</p>
+
+Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le
+accuratezze che otteniamo sono relativamente basse, ma comunque conformi al
+risultato ottenuto dal calcolo dell’accuratezza semplice.
+
+#### 2.1 Curva ROC
+Per quanto riguarda il Decision Tree, la curva ROC ottenuta è riportata in figura 4.3. In questo caso, la curva ROC relativa alla classe 0 (volo senza guasto) abbraccia molto bene l’angolo in alto a sinistra, rispetto invece alle altre due curve, in quanto il classificatore non è in grado di distinguere i voli di classe 1 dai voli di classe 2. Il valore AUC è molto buono per la classe 0, risulta essere invece più basso per le altre due classi.
+#### 2.2 Matrice di confusione
+Riportiamo in figura 4.4 i risultati numerici della predizione mediante matrice di confusione, applicando l’insieme dei dati di test al modello addestrato.
+
+<table align="center" border="none">
+<tr>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_dectree.png" width=100%>
+Figura 4.3: Curva ROC Decision Tree
+  </td>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_dectree.png" width=100%>
+Figura 4.4: Matrice di confusione Decision Tree
+</td>
+</tr>
+</table>
+
+Come possiamo osservare, il modello è in grado di individuare gli elementi di classe 0 correttamente ma, ha estrema difficoltà nell’andare a riconoscere gli elementi di classe 1, andandoli a classificare tutti di classe 2, comportando quindi la generazione di falsi allarmi in caso di guasto al 5% che viene segnalato come guasto al 10%.
+
+### 3 Random Forest
+Con il Random Forest riusciamo ad ottenere un’accuratezza pari al 95%. In questo
+caso l’accuratezza classica risulta essere la più alta che riusciamo ad ottenere,
+rispetto alle accuratezze di tutti gli altri classificatori. E' in grado di distinguere
+tutti le diverse categorie di classificazione in modo corretto, senza compiere errori
+rilevanti. Distigue perfettamente i voli relativi a droni senza guasto da voli relativi
+a droni con guasto al 10%. Presenta una lieve difficoltà nel distinguere voli di droni
+con guasto al 5% da voli di droni con guasto al 10% ed anche con voli di droni
+senza guasto. Di seguito riportiamo i risultati delle accuratezze ottenute mediante
+cross-validation:
+
+<p align="center">
+<table border="0", align="center">
+<tr>
+<td>0.93538462</td>
+<td>0.96615385</td>
+<td>0.94461538</td>
+<td>0.94753086</td>
+<td>0.94753086</td>
+</table>
+</p>
+
+Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le accu-
+ratezze che otteniamo sono relativamente alte, ma comunque conformi al risultato
+ottenuto dal calcolo dell’accuratezza semplice.
+#### 3.1 Curva ROC
+Per quanto riguarda il Random Forest, la curva ROC ottenuta è riportata in figura
+4.5. Come possiamo osservare, la classe 0 e la classe 2 hanno entrambe una curva ROC che abbraccia perfettamente l’angolo in alto a sinistra del grafico, significato
+del fatto che entrambe sono perfettamente distinguibili, con un valore dell’AUC
+pari a 1 per entrambe le classi. Simile è la situazione la classe 1 con una curva
+ROC leggermente diversa e pi`u spostata verso il basso in alcuni punti ed un valore
+dell’AUC pari a 0.96.
+
+#### 3.2 Matrice di confusione
+Riportiamo in figura 4.6 i risultati numerici della predizione mediante matrice di
+confusione, applicando l’insieme dei dati di test al modello addestrato.
+
+<table align="center" border="none">
+<tr>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_randfor.png" width=100%>
+Figura 4.5: Curva ROC Random Forest
+  </td>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_randfor.png" width=100%>
+Figura 4.6: Matrice di confusione Random Forest
+</td>
+</tr>
+</table>
+
+Come possiamo osservare, quasi tutti i dati presenti nell’insieme di test sono stati assegnati alla classe corretta. Si può osservare una lieve sfumatura  nell’assegnazione degli elementi di classe 1 alle altre classi mentre, tutti gli elementi di classe 2 vengono correttamente assegnati alla rispettiva classe di appartenenza, senza commettere alcun errore. Nel complesso il risultato che otteniamo è molto buono.
+
+### 4 Support Vector Machine
+Con il Support Vector Machine riusciamo ad ottenere un’accuratezza pari al 67%.
+In questo caso l’accuratezza classica risulta essere di molto più bassa rispetto al
+classificatore precedente. In questo caso il modello risultante non presenta grandi
+difficoltà nella classificazione di voli di drone con guasto al 10%. Non possiamo
+però dire la stessa cosa però per quanto riguarda la distinzione tra i voli relativi
+a droni senza guasto rispetto a voli relativi a droni con guasto al 5%, in quanto il
+classificatore presenta delle difficoltà nell’assegnazione degli elementi alle rispettive
+classi. Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
+
+<p align="center">
+<table border="0", align="center">
+<tr>
+<td>0.68307692</td>
+<td>0.67384615</td>
+<td>0.63076923</td>
+<td>0.69753086</td>
+<td>0.65740741</td>
+</table>
+</p>
+
+Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le
+accuratezze che otteniamo sono relativamente basse, ma comunque conformi al
+risultato ottenuto dal calcolo dell’accuratezza semplice.
+#### 4.1 Curva ROC
+Per quanto riguarda il Support Vector Machine, la curva ROC ottenuta è riportata
+in figura 4.7.
+Come possiamo osservare dal grafico riportato, la curva ROC relativa alla classe 2
+abbraccia l’angolo in alto a sinistra, a ragion del fatto che il classificatore è in grado
+di distinguere correttamente gli elementi classe 2 dagli altri elementi appartenenti
+alle altre classi, con un valore AUC pari allo 9.99. Le altre due classi hanno una
+curva ROC decisamente pi`u bassa rispetto alla precedente, relative al fatto che il
+classificatore fa difficoltà nella distinzione dei dati. La curva ROC della classe 0 è
+leggermente migliore della curva ROC della classe 1 con un AUC di 0.75 mentre
+di 0.78 per la classe 0.
+
+#### 4.2 Matrice di confusione
+Riportiamo in figura 4.8 i risultati numerici della predizione mediante matrice di
+confusione, applicando l’insieme dei dati di test al modello addestrato.
+
+<table align="center" border="none">
+<tr>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_svm.png" width=100%>
+Figura 4.7: Curva ROC Support Vector Machine
+  </td>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_svm.png" width=100%>
+Figura 4.8: Matrice di confusione Random Forest
+</td>
+</tr>
+</table>
+
+Come possiamo osservare, non vi sono errori rilevanti per quanto riguarda l’assegnazione degli elementi di classe 2. Particolari differenze invece le possiamo
+osservare nell’assegnazione degli elementi di classe 0 e di classe 1. Per quanto riguarda la classe dei voli relativi a droni senza guasto (classe 0), il classificatore è in
+grado di fare una corretta distinzione tra questi e i voli relativi a droni con guasto
+al 10% (guasto 2), presenta invece una maggiore difficoltà nel distinguere voli senza
+guasto da voli con guasto al 5%. Comunque, in questa situazione, la maggior parte
+dei dati di classe 0 è assegnato correttamente (su 112 elementi di classe 0, 73 sono
+assegnati alla classe corretta, 33 alla classe 1 e 6 alla classe 2). Un discorso simile
+può essere fatto per gli elementi di classe 1: in questo caso però, poco meno della
+metà degli elementi `e assegnato alla classe corretta (su 109 elementi di classe 1,
+51 sono assegnati alla classe corretta, 53 sono assegnati alla classe 0 e 5 alla classe
+2). Questo classificatore commette quindi un errore maggiore nell’assegnazione dei
+dati di test alle relative classi di appartenenza.
+
+### 5 Multi Layer Perceptron
+Con il Multi Layer Perceptron riusciamo ad ottenere un’accuratezza pari al 0.91%.
+In questo caso il risultato dell’accuratezza è relativamente alto, in questo caso il
+classificatore è in grado di distinguere abbastanza bene gli elementi delle diverse
+classi, con qualche incertezza, soprattutto nell’assegnazione degli elementi di classe
+1. Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-
+validation:
+
+<p align="center">
+<table border="0", align="center">
+<tr>
+<td>0.88</td>
+<td>0.93846154</td>
+<td>0.89230769</td>
+<td>0.73148148</td>
+<td>0.91358025</td>
+</table>
+</p>
+
+Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le accuratezze che otteniamo sono relativamente alte. In questa casistica osserviamo
+però una maggiore variazione dell’accuratezza rispetto ai classificatori precedenti,
+soprattutto perch ́e, per quanto riguarda la quarta iterazione, otteniamo un’accuratezza di circa 0.73, rispetto alle accuratezze degli altri fold che sono più alte ed
+anche più conformi all’accuratezza classica.
+
+#### 5.1 Curva ROC
+Per quanto riguarda il Multi Layer Perceptron, la curva ROC ottenuta è riportata
+in figura 4.9.
+Come possiamo osservare dal grafico riportato, tutte e tre le curve ROC presentano
+un andamento simile ed abbracciano molto bene l’angolo in alto a sinistra. Sia
+la classe 0 che la classe 2 hanno un valore AUC pari a 0.99, l’AUC relativo alla
+classe 1 è invece un po’ pi`u basso, pari allo 0.97, sempre a causa del fatto che si fa
+maggiore difficoltà nell’assegnare i dati a questa classe.
+
+#### 5.2 Matrice di confusione
+Riportiamo in figura 4.10 i risultati numerici della predizione mediante matrice di
+confusione, applicando l’insieme dei dati di test al modello addestrato.
+
+<table align="center" border="none">
+<tr>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_mlp.png" width=100%>
+Figura 4.9: Curva ROC Support Multi Layer Perceptron
+  </td>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_mlp.png" width=100%>
+Figura 4.8: Matrice di confusione Multi Layer Perceptron
+</td>
+</tr>
+</table>
+
+Come possiamo vedere, i dati che vengono classificati in modo migliore sono quelli
+relativi alla classe 0, in cui solo 2 elementi vengono assegnati ad una classe diversa
+da quella corretta. Maggiore differenza la riscontriamo sempre nell’assegnazione
+degli elementi di classe 1, in cui una discreta quantità viene assegnata erroneamente
+alla classe 0 ed una piccola quantità alla classe 2; tutto sommato la maggior parte
+degli elementi viene assegnato alla classe corretta. Simili affermazioni possiamo
+farle per la classe 2.
+
 # Autori
 
 :woman_technologist: [Chiara Amalia Caporusso](https://github.com/ChiaraAmalia) 
