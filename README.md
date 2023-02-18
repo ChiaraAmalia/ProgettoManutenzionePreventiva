@@ -34,6 +34,7 @@ Tra le più importanti possiamo individuare:
 - **Pandas**: è uno strumento per la manipolazione e l'analisi dei dati veloce e semplice da utilizzare.
 - **SciPy**: è una libreria open source di algoritmi e strumenti matematici. Contiene moduli per l'ottimizzazione, per l'algebra lineare, l'integrazione, funzioni speciali, FFT, elaborazione di segnali ed immagini, solver ODE e altri strumenti comuni nelle scienze e nell'ingegneria.
 - **Scikit-Learn**: è una libreria open source di apprendimento automatico. Contiene algoritmi di classificazione, regressione e clustering (raggruppamento) e macchine a vettori di supporto, regressione logistica, classificatore bayesiano, k-mean e DBSCAN, ed è progettato per operare con le librerie NumPy e SciPy.
+- **Imbalanced-Learn**: è una libreria open-source che si basa su Scikit-Learn che fornisce strumenti per gestire la classificazione con classi sbilanciate
 - **Seaborn**: Seaborn è una libreria in Python utilizzata principalmente per creare grafici statistici.
 
 ### 2 Strumenti
@@ -41,9 +42,8 @@ Per lo sviluppo di questo progetto, è necessario installare i seguenti tool:
 
 - Installazione di *MATLAB*: per l’estrazione dei file utili ai fini dell’analisi.
 - Installazione della versione *Python 3.10.2*, utilizzata per lo sviluppo del progetto.
-- Installazione delle *librerie Python* utilizzate: Pandas, SciPy, Scikit-Learn, Seaborn.
-- Installazione di *Jupyter Notebook*, per l’elaborazione interattiva in tutti i
-linguaggi di programmazione, utilizzato per l’elaborazione di parti di codice al fine di analizzarne i risultati intermedi.
+- Installazione delle *librerie Python* utilizzate: Pandas, SciPy, Scikit-Learn, Imbalanced-Learn, Seaborn.
+- Installazione di *Jupyter Notebook*, per l’elaborazione interattiva in tutti i linguaggi di programmazione, utilizzato per l’elaborazione di parti di codice al fine di analizzarne i risultati intermedi.
 
 ## Sviluppo del progetto
 L’obiettivo del progetto consiste nell’analizzare i dataset di volo di un drone esarotore in caso di pale nuove e pale usurate (i.e. una pala appositamente danneggiata) al fine di discriminarne il funzionamento.
@@ -103,11 +103,11 @@ In questa fase, avendo ottenuto tutte le variabili e i relativi parametri utili 
 ###### Unione delle tabelle
 Il primo passo di questa fase è stato unire tutte le tabelle, risultanti dalle precedenti operazioni, per fare ciò abbiamo sfruttato il metodo di pandas *merge_ordered()*, progettata per dati ordinati come dati di serie temporali e che semplicemente esegue l'unione di questi dati (mantenendo l'ordine).
 
-In seguito abbiamo proceduto andando ad imputare i valori mancanti e per fare ciò abbiamo utilizzato un altro metodo di pandas, ovvero *DataFrame.fillna()* che permette di andare a riempire i valori mancanti con il metodo specificato tra le parentesi.
+In seguito abbiamo proceduto andando ad imputare i valori mancanti e per fare ciò abbiamo utilizzato un altro metodo di pandas, ovvero *fillna()* che permette di andare a riempire i valori mancanti con il metodo specificato tra le parentesi.
 
-Come è possibile vedere nel codice riportato sotto, noi abbiamo applicato tale funzione due volte, una prima volta con il metodo *"ffill"* che sostanzialmente propaga l'ultima osservazione valida in avanti fino alla prossima valida, e successivamente, per riempire i valori che in questo modo rimanevano vuoti, con il metodo *"bfill"* che utilizza ,l'osservazione valida successiva per colamre le lacune (lavora all'indietro).
+Come è possibile vedere nel codice riportato sotto, noi abbiamo applicato tale funzione due volte, una prima volta con il metodo *"ffill"* che sostanzialmente propaga l'ultima osservazione valida in avanti fino alla prossima valida, e successivamente, per riempire i valori che in questo modo rimanevano vuoti, con il metodo *"bfill"* che utilizza l'osservazione valida successiva per colamre le lacune (lavora all'indietro).
 
-Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincronizzazione dei tempi del volo, impostando a 0 $\mu$s la prima riga della tabella, indicando il fatto che il volo inizi in quell'istante di tempo, andando quindi a sottrarre a ciascuna riga, relativamente alla colonna dei tempi, il vaore della prima. 
+Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincronizzazione dei tempi del volo, impostando a 0 µs la prima riga della tabella, indicando il fatto che il volo inizi in quell'istante di tempo, andando quindi a sottrarre a ciascuna riga, relativamente alla colonna dei tempi, il vaore della prima. 
 
 ###### Sincronizzazione con 350 misurazioni al secondo
 Essendo noto il fatto che il campionamento avveniva con una frequenza pari a: $f_c=350$, ma che i sensori potevano in realta campionare a tempi leggermente diversi, si è forzatamente sincronizzato il dataset per fare in modo che le misurazzioni fossero effettivamente 350 al secondo.
