@@ -1,6 +1,5 @@
 .
 ├── ATT.csv
-├── CTUN.csv
 ├── ESC_0.csv
 ├── ESC_1.csv
 ├── ESC_2.csv
@@ -14,4 +13,4 @@
 ├── XKF1_0.csv
 └── XKF1_1.csv
 
-0 directories, 14 files
+0 directories, 13 files
