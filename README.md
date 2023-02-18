@@ -5,6 +5,7 @@
 <a href="#Strumenti-e-metodi">Strumenti e metodi</a>&nbsp•
 <a href="#Sviluppo-del-progetto">Sviluppo</a>&nbsp•
 <a href="#Risultati">Risultati</a>&nbsp•
+<a href="#Conclusioni-e-sviluppi-futuri">Conclusioni e sviluppi futuri</a>&nbsp•
 <a href="#Autori">Autori</a>
 
 </p>
