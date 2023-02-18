@@ -34,6 +34,7 @@ Tra le più importanti possiamo individuare:
 - **Pandas**: è uno strumento per la manipolazione e l'analisi dei dati veloce e semplice da utilizzare.
 - **SciPy**: è una libreria open source di algoritmi e strumenti matematici. Contiene moduli per l'ottimizzazione, per l'algebra lineare, l'integrazione, funzioni speciali, FFT, elaborazione di segnali ed immagini, solver ODE e altri strumenti comuni nelle scienze e nell'ingegneria.
 - **Scikit-Learn**: è una libreria open source di apprendimento automatico. Contiene algoritmi di classificazione, regressione e clustering (raggruppamento) e macchine a vettori di supporto, regressione logistica, classificatore bayesiano, k-mean e DBSCAN, ed è progettato per operare con le librerie NumPy e SciPy.
+- **Imbalanced-Learn**: è una libreria open-source che si basa su Scikit-Learn che fornisce strumenti per gestire la classificazione con classi sbilanciate
 - **Seaborn**: Seaborn è una libreria in Python utilizzata principalmente per creare grafici statistici.
 
 ### 2 Strumenti
@@ -41,9 +42,8 @@ Per lo sviluppo di questo progetto, è necessario installare i seguenti tool:
 
 - Installazione di *MATLAB*: per l’estrazione dei file utili ai fini dell’analisi.
 - Installazione della versione *Python 3.10.2*, utilizzata per lo sviluppo del progetto.
-- Installazione delle *librerie Python* utilizzate: Pandas, SciPy, Scikit-Learn, Seaborn.
-- Installazione di *Jupyter Notebook*, per l’elaborazione interattiva in tutti i
-linguaggi di programmazione, utilizzato per l’elaborazione di parti di codice al fine di analizzarne i risultati intermedi.
+- Installazione delle *librerie Python* utilizzate: Pandas, SciPy, Scikit-Learn, Imbalanced-Learn, Seaborn.
+- Installazione di *Jupyter Notebook*, per l’elaborazione interattiva in tutti i linguaggi di programmazione, utilizzato per l’elaborazione di parti di codice al fine di analizzarne i risultati intermedi.
 
 ## Sviluppo del progetto
 L’obiettivo del progetto consiste nell’analizzare i dataset di volo di un drone esarotore in caso di pale nuove e pale usurate (i.e. una pala appositamente danneggiata) al fine di discriminarne il funzionamento.
