@@ -107,7 +107,7 @@ In seguito abbiamo proceduto andando ad imputare i valori mancanti e per fare ci
 
 Come è possibile vedere nel codice riportato sotto, noi abbiamo applicato tale funzione due volte, una prima volta con il metodo *"ffill"* che sostanzialmente propaga l'ultima osservazione valida in avanti fino alla prossima valida, e successivamente, per riempire i valori che in questo modo rimanevano vuoti, con il metodo *"bfill"* che utilizza l'osservazione valida successiva per colamre le lacune (lavora all'indietro).
 
-Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincronizzazione dei tempi del volo, impostando a 0 $\mu$s la prima riga della tabella, indicando il fatto che il volo inizi in quell'istante di tempo, andando quindi a sottrarre a ciascuna riga, relativamente alla colonna dei tempi, il vaore della prima. 
+Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincronizzazione dei tempi del volo, impostando a 0 µs la prima riga della tabella, indicando il fatto che il volo inizi in quell'istante di tempo, andando quindi a sottrarre a ciascuna riga, relativamente alla colonna dei tempi, il vaore della prima. 
 
 ###### Sincronizzazione con 350 misurazioni al secondo
 Essendo noto il fatto che il campionamento avveniva con una frequenza pari a: $f_c=350$, ma che i sensori potevano in realta campionare a tempi leggermente diversi, si è forzatamente sincronizzato il dataset per fare in modo che le misurazzioni fossero effettivamente 350 al secondo.
