@@ -155,7 +155,7 @@ Dopo aver ottenuto, per ciascun volo considerato, un file .csv ad esso associato
 #### 3.1 Bilanciamento del dataset
 Prima di procedere con la fase di classificazione, ci siamo resi conto che il dataset
 era fortemente sbilanciato, ovvero il numero di righe relative ad un guasto del 10%
-erano molte di pi`u rispetto alle righe relative a droni senza guasto, ovvero i dati
+erano molte di più rispetto alle righe relative a droni senza guasto, ovvero i dati
 risultanti sono stati:
 
  - Nessun guasto: 390
@@ -165,13 +165,13 @@ risultanti sono stati:
 Sulla base di questi risultati, si è valutato quindi di effettuare un oversampling del dataset. Per effettuare l’oversampling ci siamo basati sulla libreria SMOTE(Synthetic Minority Over-sampling Technique): viene quindi selezionata casualmente un’istanza della classe minoritaria, andando ad individuare i K punti più vicini ad essa. Andiamo poi a scegliere a caso uno di questi K punti ed andiamo a tracciare un segmento nello spazio delle feature tra il punto della classe minoritaria scelto ed il punto scelto tra i K più vicini. Le istanze sintetiche vengono generate come combinazione convessa di queste due istanze.
 
 A questo punto, tutte e tre le categorie di guasto conterranno 541 elementi, potendo
-quindi procedere con il passo successivo di selezione delle feature pi`u importanti.
+quindi procedere con il passo successivo di selezione delle feature più importanti.
 #### 3.2 Selezione delle feature
 Per scegliere le feature migliori è risultato importante andare ad utilizzare un
 particolare metodo, in modo da poter prendere le feature più adatte su cui fare
 classificazione. Abbiamo deciso di utilizzare come tecnica statistica l’analisi della
 varianza (ANOVA). Con l’analisi della varianza l’obiettivo è appunto quello di
-individuare e quindi selezionare quelle feature più importanti al fine di ridurre la complessità del modello. L’idea di base `e appunto individuare tutte quelle
+individuare e quindi selezionare quelle feature più importanti al fine di ridurre la complessità del modello. L’idea di base è appunto individuare tutte quelle
 differenze tali per cui determinati valori siano relativi a caratteristiche proprie del
 gruppo di appartenenza.
 
@@ -179,12 +179,12 @@ Entrando nel dettaglio, abbiamo deciso di utilizzare l’analisi delle varianze 
 da poter individuare, sui dati a disposizione, le prime 15 feature più importanti.
 
 #### 3.3 Separazione del dataset
-Dopo aver individuato le feature pi`u rilevanti, mediante il metodo ANOVA, pro-
+Dopo aver individuato le feature più rilevanti, mediante il metodo ANOVA, pro-
 cediamo con lo split del dataset in training e test, definendo una dimensione
 dell’insieme dei dati di training pari all’80% dell’insieme dei dati originali mentre
 per il test pari al 20%.
 
-In questo modo l’insieme di dati di training sar`a composto da 1298 elementi mentre,
+In questo modo l’insieme di dati di training sarà composto da 1298 elementi mentre,
 l’insieme dei dati di test sarà composto da 325 elementi.
 
 #### 3.4 Definizione dei classificatori
@@ -205,12 +205,12 @@ con l’addestramento e la validazione dei modelli ottenuti, con successiva valu
 zione dei risultati ottenuti.
 
 #### 3.6 Matrici di confusione
-Con i risultati precedentemente ottenuti si `e proceduto con il plotting delle matrici
+Con i risultati precedentemente ottenuti si è proceduto con il plotting delle matrici
 di confusione.
 
 Le matrici di confusione vengono utilizzate per visualizzare il risultato ottenuto con
 la predizione della classe di appartenenza sui dati di test. E' un metodo utile al fine
-di visualizzare eventuali anomalie o semplicemente vedere la quantit`a di elementi
+di visualizzare eventuali anomalie o semplicemente vedere la quantità di elementi
 che sono stati classificati correttamente. Nella diagonale principale sono riportati i
 dati che sono stati correttamente assegnati alla relativa classe di appartenenza, al
 di fuori della diagonale principale sono presenti tutti quei dati che non sono stati
@@ -343,7 +343,7 @@ Per quanto riguarda il Random Forest, la curva ROC ottenuta è riportata in figu
 4.5. Come possiamo osservare, la classe 0 e la classe 2 hanno entrambe una curva ROC che abbraccia perfettamente l’angolo in alto a sinistra del grafico, significato
 del fatto che entrambe sono perfettamente distinguibili, con un valore dell’AUC
 pari a 1 per entrambe le classi. Simile è la situazione la classe 1 con una curva
-ROC leggermente diversa e pi`u spostata verso il basso in alcuni punti ed un valore
+ROC leggermente diversa e più spostata verso il basso in alcuni punti ed un valore
 dell’AUC pari a 0.96.
 
 #### 3.2 Matrice di confusione
@@ -396,7 +396,7 @@ Come possiamo osservare dal grafico riportato, la curva ROC relativa alla classe
 abbraccia l’angolo in alto a sinistra, a ragion del fatto che il classificatore è in grado
 di distinguere correttamente gli elementi classe 2 dagli altri elementi appartenenti
 alle altre classi, con un valore AUC pari allo 9.99. Le altre due classi hanno una
-curva ROC decisamente pi`u bassa rispetto alla precedente, relative al fatto che il
+curva ROC decisamente più bassa rispetto alla precedente, relative al fatto che il
 classificatore fa difficoltà nella distinzione dei dati. La curva ROC della classe 0 è
 leggermente migliore della curva ROC della classe 1 con un AUC di 0.75 mentre
 di 0.78 per la classe 0.
@@ -426,7 +426,7 @@ guasto da voli con guasto al 5%. Comunque, in questa situazione, la maggior part
 dei dati di classe 0 è assegnato correttamente (su 112 elementi di classe 0, 73 sono
 assegnati alla classe corretta, 33 alla classe 1 e 6 alla classe 2). Un discorso simile
 può essere fatto per gli elementi di classe 1: in questo caso però, poco meno della
-metà degli elementi `e assegnato alla classe corretta (su 109 elementi di classe 1,
+metà degli elementi è assegnato alla classe corretta (su 109 elementi di classe 1,
 51 sono assegnati alla classe corretta, 53 sono assegnati alla classe 0 e 5 alla classe
 2). Questo classificatore commette quindi un errore maggiore nell’assegnazione dei
 dati di test alle relative classi di appartenenza.
@@ -461,7 +461,7 @@ in figura 4.9.
 Come possiamo osservare dal grafico riportato, tutte e tre le curve ROC presentano
 un andamento simile ed abbracciano molto bene l’angolo in alto a sinistra. Sia
 la classe 0 che la classe 2 hanno un valore AUC pari a 0.99, l’AUC relativo alla
-classe 1 è invece un po’ pi`u basso, pari allo 0.97, sempre a causa del fatto che si fa
+classe 1 è invece un po’ più basso, pari allo 0.97, sempre a causa del fatto che si fa
 maggiore difficoltà nell’assegnare i dati a questa classe.
 
 #### 5.2 Matrice di confusione
