@@ -112,11 +112,11 @@ Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincroni
 ###### Sincronizzazione con 350 misurazioni al secondo
 Essendo noto il fatto che il campionamento avveniva con una frequenza pari a: $f_c=350$, ma che i sensori potevano in realta campionare a tempi leggermente diversi, si è forzatamente sincronizzato il dataset per fare in modo che le misurazioni fossero effettivamente 350 al secondo.
 
-Quindi noto che il tempo di campionamento fosse pari a: $T=1/f_c=1/350=0.002857s=2857\mu s$, utilizzando un semplice ciclo for, si è creato un dataframe con i tempi in modo tale che tra le varie misurazioni trascorressero veramente $2857\mu s$.
+Quindi noto che il tempo di campionamento fosse pari a: $T=1/f_c=1/350=0.002857s=2857\mu s$, utilizzando un semplice ciclo _for_, si è creato un dataframe con i tempi in modo tale che tra le varie misurazioni trascorressero veramente $2857\mu s$.
 
 Infine si è unito questo dataframe a quello precedentemente ottenuto, si sono rimosse le righe con i tempi che non rispettavano la distanza tra le misurazioni.
 
-A questo punto trasformiamo la colonna dei tempi, espressa in $\mu$s, in un formato HH:MM:SS.
+A questo punto trasformiamo la colonna dei tempi, espressa in µs, in un formato HH:MM:SS.
 
 Questa trasformazione la effettuiamo per verificare se effettivamente vi sono $2857 \mu s$ tra una misurazione e l'altra, e per rendere più leggibile la variabile temporale.
 
