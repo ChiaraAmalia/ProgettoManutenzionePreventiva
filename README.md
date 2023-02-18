@@ -5,6 +5,7 @@
 <a href="#Strumenti-e-metodi">Strumenti e metodi</a>&nbsp•
 <a href="#Sviluppo-del-progetto">Sviluppo</a>&nbsp•
 <a href="#Risultati">Risultati</a>&nbsp•
+<a href="#Conclusioni-e-sviluppi-futuri">Conclusioni e sviluppi futuri</a>&nbsp•
 <a href="#Autori">Autori</a>
 
 </p>
@@ -20,10 +21,157 @@ Dal datalog fornitoci siamo andate a recuperare solamente una parte delle variab
 
 In ciascuna tabella riportata è compreso anche il campo **TimeUS**, indicante l'istante di tempo (in microsecondi), in cui è stata rilevata la misurazione dei parametri riportati (i microsecondi partono dal momento in cui il sistema è stato avviato). Tale parametro è risultato poi essere di fondamentale importanza per la sincronizzazione dei tempi e l'unione di tutti i parametri utili ai fini delle analisi effettuate.
 
+### 1.1 ATT (informazioni di attitudine)
+<p align="center">
+<table align="center">
+<caption style="caption-side:bottom">Tabella 1.1: Informazioni di attitudine</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>DesRoll</th>
+            <td>Angolo desiderato di rollio dal pilota, in gradi (se negativo a sinistra, se positivo a destra)</td>
+        </tr>
+        <tr>
+            <th>Roll</th>
+            <td>Angolo di rollio effettivo del velivolo, in gradi (se negativo a sinistra, se positivo a destra)</td>
+        </tr>
+        <tr>
+            <th>DesPitch</th>
+            <td>Angolo di beccheggio desiderato dal pilota, in gradi (se negativo in avanti, se positivo all'indietro)</td>
+        </tr>
+        <tr>
+            <th>Pitch</th>
+            <td>Angolo di beccheggio effettivo del velivolo, in gradi  (se negativo in avanti, se positivo all'indietro)</td>
+        </tr>
+        <tr>
+            <th>DesYaw</th>
+            <td>Direzione desiderata dal pilota, in gradi (0 = nord)</td>
+        </tr>
+        <tr>
+            <th>Yaw</th>
+            <td>Direzione effettiva del velivolo, in gradi (0 = nord)</td>
+        </tr>
+    </tbody>
+</table>
+</p>
+
+I parametri presenti nella tabella 1.1 vengono considerati per poter prendere i desiderati e gli effettivi dei valori di Rollio, Beccheggio e Bardatura. Questi rappresentano gli angoli di inclinazione del velivolo, insieme ai valori desiderati dagli angoli imposti dal controllore, che vengono assegnati da radiocomando.
+
+### 1.2 ESC (Feedback ricevuto dagli ESC)
+<p align="center">
+<table>
+<caption style="caption-side:bottom">Tabella 1.2: Feedback ricevuto dagli ESC</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Instance</th>
+            <td>Numero di istanza ESC, relativa al motore considerato</td>
+        </tr>
+        <tr>
+            <th>RPM</th>
+            <td>Tasso di rotazione del motore riportato</td>
+        </tr>
+        <tr>
+            <th>Curr</th>
+            <td>Corrente di input ricevuta dall'ESC</td>
+        </tr>
+    </tbody>
+</table> 
+</p>
+L’ Electronic Speed Controller (ESC), tabella 1.2, è un componente fondamentale per il corretto funzionamento di un drone multirotore. La sua funzione è quella di collegare il controllore di volo con i motori consentendo la regolazione della velocità degli stessi. Ogni motore è dotato di un suo ESC perché in un sistema di volo multirotore, ogni motore avrà regimi di rotazione diversi rispetto agli altri. In RPM abbiamo i valori misurati dal sensore di velocità relativo al dato ESC, in CURR abbiamo la corrente di alimentazione dell'ESC. Il drone ha una sensorizzazione ad hoc sul motore.
+
+### 1.3 IMU (Informazioni relative all'accelerometro e giroscopio)
+<p align="center">
+<table>
+<caption style="caption-side:bottom">Tabella 1.3: Informazioni relative all'accelerometro e giroscopio</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <th>Instance</th>
+        <td>Numero di istanza IMU</td>
+    </tr>
+    <tr>
+        <th>GyrX, GyrY, GyrZ</th>
+        <td>Velocità di rotazione grezza del giroscopio in rad/sec</td>
+    </tr>
+    <tr>
+        <th>AccX, AccY, AccZ</th>
+        <td>Valori grezzi dell'accelerometro in m/$s^2$</td>
+    </tr>
+	</tbody>
+</table> 
+</p>
+
+I parametri presenti nella tabella 1.3 vengono presi per tenere in considerazione la velocità angolare del giroscopio e i relativi valori dell'accelerometro. Tale variabile contiene i dati ad alta frequenza, intorno ai 350 Hz.
+
+### 1.4 RCOU (Valori di uscita servo channel da 9 a 14)
+<p align="center">
+<table>
+<caption style="caption-side:bottom">Tabella 1.4: Valori di uscita servo channel da 9 a 14</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <th>C9,...,C14</th>
+        <td>Output canali considerati</td>
+    </tr>
+	</tbody>
+</table> 
+</p>
+
+I valori riportati nelle variabili del parametro RCOU, tabella 1.4, contengono i comandi di Pulse-With Modulation (Modulazione della larghezza di impulso) relativi ai sei motori, in cui i canali attivi sono da C9 a C14.
+### 1.5 XKF (Output stimatore EKF3)
+<p align="center">
+<table>
+<caption style="caption-side:bottom">Tabella 1.5: Informazioni di attitudine</caption>
+    <thead>
+        <tr>
+            <th>Parametro</th>
+            <th>Descrizione</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <th>Roll</th>
+        <td>Rollio stimato</td>
+    </tr>
+    <tr>
+        <th>Pitch</th>
+        <td>Beccheggio stimato</td>
+    </tr>
+    <tr>
+        <th>Yaw</th>
+        <td>Imbardata stimata</td>
+    </tr>
+	</tbody>
+</table> 
+</p>
+
+L'obiettivo nell'utilizzo di questa variabile è verificare che i valori di Roll, Pitch e Yaw siano gli stessi di quelli presenti nella variabile ATT. XKF è una misura aggregata che viene generata da un topic, che si occupa di compiere un filtraggio alla Kalman.
+
 Per un maggior approfondimento sui parametri utilizzati consultare la documentazione.
 
 ## Come eseguire il nostro progetto
-Per eseguire il nostro progetto sarà sufficiente scaricare il contenuto del repository di GitHub, e poi mandare in run il file *analisi_tutti_15.ipynb*, non è necessario mandare in run gli altri file in quanto i database relativi ai vari voli sono già stati pre-processati e sono presenti nella repository.
+Per eseguire il nostro progetto sarà sufficiente scaricare il contenuto del repository di GitHub, e poi mandare in run il file *analisi_tutti_15.ipynb*, non è necessario mandare in run gli altri file in quanto i database relativi ai vari voli sono già stati pre-processati e sono presenti nella repository. Ciascun file relativo ad ogni volo per il calcolo delle feature è presente all'interno delle cartelle M1..M6, divise ognuna in ulteriori tre cartelle, relative ai log di volo considerati.
 
 ## Strumenti e metodi
 ### 1 Linguaggi e librerie
@@ -110,13 +258,13 @@ Come è possibile vedere nel codice riportato sotto, noi abbiamo applicato tale 
 Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincronizzazione dei tempi del volo, impostando a 0 µs la prima riga della tabella, indicando il fatto che il volo inizi in quell'istante di tempo, andando quindi a sottrarre a ciascuna riga, relativamente alla colonna dei tempi, il vaore della prima. 
 
 ###### Sincronizzazione con 350 misurazioni al secondo
-Essendo noto il fatto che il campionamento avveniva con una frequenza pari a: $f_c=350$, ma che i sensori potevano in realta campionare a tempi leggermente diversi, si è forzatamente sincronizzato il dataset per fare in modo che le misurazzioni fossero effettivamente 350 al secondo.
+Essendo noto il fatto che il campionamento avveniva con una frequenza pari a: $f_c=350$, ma che i sensori potevano in realta campionare a tempi leggermente diversi, si è forzatamente sincronizzato il dataset per fare in modo che le misurazioni fossero effettivamente 350 al secondo.
 
-Quindi noto che il tempo di campionamento fosse pari a: $T=1/f_c=1/350=0.002857s=2857\mu s$, utilizzando un semplice ciclo for, si è creato un dataframe con i tempi in modo tale che tra le varie misurazioni trascorressero veramente $2857\mu s$.
+Quindi noto che il tempo di campionamento fosse pari a: $T=1/f_c=1/350=0.002857s=2857\mu s$, utilizzando un semplice ciclo _for_, si è creato un dataframe con i tempi in modo tale che tra le varie misurazioni trascorressero veramente $2857\mu s$.
 
 Infine si è unito questo dataframe a quello precedentemente ottenuto, si sono rimosse le righe con i tempi che non rispettavano la distanza tra le misurazioni.
 
-A questo punto trasformiamo la colonna dei tempi, espressa in $\mu$s, in un formato HH:MM:SS.
+A questo punto trasformiamo la colonna dei tempi, espressa in µs, in un formato HH:MM:SS.
 
 Questa trasformazione la effettuiamo per verificare se effettivamente vi sono $2857 \mu s$ tra una misurazione e l'altra, e per rendere più leggibile la variabile temporale.
 
@@ -155,7 +303,7 @@ Dopo aver ottenuto, per ciascun volo considerato, un file .csv ad esso associato
 #### 3.1 Bilanciamento del dataset
 Prima di procedere con la fase di classificazione, ci siamo resi conto che il dataset
 era fortemente sbilanciato, ovvero il numero di righe relative ad un guasto del 10%
-erano molte di pi`u rispetto alle righe relative a droni senza guasto, ovvero i dati
+erano molte di più rispetto alle righe relative a droni senza guasto, ovvero i dati
 risultanti sono stati:
 
  - Nessun guasto: 390
@@ -165,13 +313,13 @@ risultanti sono stati:
 Sulla base di questi risultati, si è valutato quindi di effettuare un oversampling del dataset. Per effettuare l’oversampling ci siamo basati sulla libreria SMOTE(Synthetic Minority Over-sampling Technique): viene quindi selezionata casualmente un’istanza della classe minoritaria, andando ad individuare i K punti più vicini ad essa. Andiamo poi a scegliere a caso uno di questi K punti ed andiamo a tracciare un segmento nello spazio delle feature tra il punto della classe minoritaria scelto ed il punto scelto tra i K più vicini. Le istanze sintetiche vengono generate come combinazione convessa di queste due istanze.
 
 A questo punto, tutte e tre le categorie di guasto conterranno 541 elementi, potendo
-quindi procedere con il passo successivo di selezione delle feature pi`u importanti.
+quindi procedere con il passo successivo di selezione delle feature più importanti.
 #### 3.2 Selezione delle feature
 Per scegliere le feature migliori è risultato importante andare ad utilizzare un
 particolare metodo, in modo da poter prendere le feature più adatte su cui fare
 classificazione. Abbiamo deciso di utilizzare come tecnica statistica l’analisi della
 varianza (ANOVA). Con l’analisi della varianza l’obiettivo è appunto quello di
-individuare e quindi selezionare quelle feature più importanti al fine di ridurre la complessità del modello. L’idea di base `e appunto individuare tutte quelle
+individuare e quindi selezionare quelle feature più importanti al fine di ridurre la complessità del modello. L’idea di base è appunto individuare tutte quelle
 differenze tali per cui determinati valori siano relativi a caratteristiche proprie del
 gruppo di appartenenza.
 
@@ -179,12 +327,11 @@ Entrando nel dettaglio, abbiamo deciso di utilizzare l’analisi delle varianze 
 da poter individuare, sui dati a disposizione, le prime 15 feature più importanti.
 
 #### 3.3 Separazione del dataset
-Dopo aver individuato le feature pi`u rilevanti, mediante il metodo ANOVA, pro-
-cediamo con lo split del dataset in training e test, definendo una dimensione
+Dopo aver individuato le feature più rilevanti, mediante il metodo ANOVA, procediamo con lo split del dataset in training e test, definendo una dimensione
 dell’insieme dei dati di training pari all’80% dell’insieme dei dati originali mentre
 per il test pari al 20%.
 
-In questo modo l’insieme di dati di training sar`a composto da 1298 elementi mentre,
+In questo modo l’insieme di dati di training sarà composto da 1298 elementi mentre,
 l’insieme dei dati di test sarà composto da 325 elementi.
 
 #### 3.4 Definizione dei classificatori
@@ -201,16 +348,15 @@ ciascun modello ottenuto. Tra i classificatori utilizzati abbiamo:
 
 #### 3.5 Addestramento e validazione
 Dopo aver definito tutte le specifiche utili al fine della classificazione, procediamo
-con l’addestramento e la validazione dei modelli ottenuti, con successiva valuta-
-zione dei risultati ottenuti.
+con l’addestramento e la validazione dei modelli ottenuti, con successiva valutazione dei risultati ottenuti.
 
 #### 3.6 Matrici di confusione
-Con i risultati precedentemente ottenuti si `e proceduto con il plotting delle matrici
+Con i risultati precedentemente ottenuti si è proceduto con il plotting delle matrici
 di confusione.
 
 Le matrici di confusione vengono utilizzate per visualizzare il risultato ottenuto con
 la predizione della classe di appartenenza sui dati di test. E' un metodo utile al fine
-di visualizzare eventuali anomalie o semplicemente vedere la quantit`a di elementi
+di visualizzare eventuali anomalie o semplicemente vedere la quantità di elementi
 che sono stati classificati correttamente. Nella diagonale principale sono riportati i
 dati che sono stati correttamente assegnati alla relativa classe di appartenenza, al
 di fuori della diagonale principale sono presenti tutti quei dati che non sono stati
@@ -343,7 +489,7 @@ Per quanto riguarda il Random Forest, la curva ROC ottenuta è riportata in figu
 4.5. Come possiamo osservare, la classe 0 e la classe 2 hanno entrambe una curva ROC che abbraccia perfettamente l’angolo in alto a sinistra del grafico, significato
 del fatto che entrambe sono perfettamente distinguibili, con un valore dell’AUC
 pari a 1 per entrambe le classi. Simile è la situazione la classe 1 con una curva
-ROC leggermente diversa e pi`u spostata verso il basso in alcuni punti ed un valore
+ROC leggermente diversa e più spostata verso il basso in alcuni punti ed un valore
 dell’AUC pari a 0.96.
 
 #### 3.2 Matrice di confusione
@@ -395,8 +541,8 @@ in figura 4.7.
 Come possiamo osservare dal grafico riportato, la curva ROC relativa alla classe 2
 abbraccia l’angolo in alto a sinistra, a ragion del fatto che il classificatore è in grado
 di distinguere correttamente gli elementi classe 2 dagli altri elementi appartenenti
-alle altre classi, con un valore AUC pari allo 9.99. Le altre due classi hanno una
-curva ROC decisamente pi`u bassa rispetto alla precedente, relative al fatto che il
+alle altre classi, con un valore AUC pari allo 0.99. Le altre due classi hanno una
+curva ROC decisamente più bassa rispetto alla precedente, relative al fatto che il
 classificatore fa difficoltà nella distinzione dei dati. La curva ROC della classe 0 è
 leggermente migliore della curva ROC della classe 1 con un AUC di 0.75 mentre
 di 0.78 per la classe 0.
@@ -426,7 +572,7 @@ guasto da voli con guasto al 5%. Comunque, in questa situazione, la maggior part
 dei dati di classe 0 è assegnato correttamente (su 112 elementi di classe 0, 73 sono
 assegnati alla classe corretta, 33 alla classe 1 e 6 alla classe 2). Un discorso simile
 può essere fatto per gli elementi di classe 1: in questo caso però, poco meno della
-metà degli elementi `e assegnato alla classe corretta (su 109 elementi di classe 1,
+metà degli elementi è assegnato alla classe corretta (su 109 elementi di classe 1,
 51 sono assegnati alla classe corretta, 53 sono assegnati alla classe 0 e 5 alla classe
 2). Questo classificatore commette quindi un errore maggiore nell’assegnazione dei
 dati di test alle relative classi di appartenenza.
@@ -452,7 +598,7 @@ validation:
 
 Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le accuratezze che otteniamo sono relativamente alte. In questa casistica osserviamo
 però una maggiore variazione dell’accuratezza rispetto ai classificatori precedenti,
-soprattutto perch ́e, per quanto riguarda la quarta iterazione, otteniamo un’accuratezza di circa 0.73, rispetto alle accuratezze degli altri fold che sono più alte ed
+soprattutto perchè, per quanto riguarda la quarta iterazione, otteniamo un’accuratezza di circa 0.73, rispetto alle accuratezze degli altri fold che sono più alte ed
 anche più conformi all’accuratezza classica.
 
 #### 5.1 Curva ROC
@@ -461,7 +607,7 @@ in figura 4.9.
 Come possiamo osservare dal grafico riportato, tutte e tre le curve ROC presentano
 un andamento simile ed abbracciano molto bene l’angolo in alto a sinistra. Sia
 la classe 0 che la classe 2 hanno un valore AUC pari a 0.99, l’AUC relativo alla
-classe 1 è invece un po’ pi`u basso, pari allo 0.97, sempre a causa del fatto che si fa
+classe 1 è invece un po’ più basso, pari allo 0.97, sempre a causa del fatto che si fa
 maggiore difficoltà nell’assegnare i dati a questa classe.
 
 #### 5.2 Matrice di confusione
@@ -476,7 +622,7 @@ Figura 4.9: Curva ROC Support Multi Layer Perceptron
   </td>
 <td align="center">
 <img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_mlp.png" width=100%>
-Figura 4.8: Matrice di confusione Multi Layer Perceptron
+Figura 4.10: Matrice di confusione Multi Layer Perceptron
 </td>
 </tr>
 </table>
@@ -488,6 +634,59 @@ degli elementi di classe 1, in cui una discreta quantità viene assegnata errone
 alla classe 0 ed una piccola quantità alla classe 2; tutto sommato la maggior parte
 degli elementi viene assegnato alla classe corretta. Simili affermazioni possiamo
 farle per la classe 2.
+
+### 6 Stochastic Gradient Descent
+Con il Stochastic Gradient Descent riusciamo ad ottenere un'accuratezza pari al $63\%$. In questo caso il risultato dell'accuratezza è relativamente basso, in quanto il classificatore è in grado di distinguere abbastanza bene gli elementi della classe 0 (volo relativo a drone senza guasto) dagli elementi della classe 2 (volo relativo a drone con guasto al 10\%) ma, trova estrema difficoltà nel riconoscere gli elementi di classe 1 (volo relativo a drone con guasto al 5\%). Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
+
+<p align="center">
+<table border="0", align="center">
+<tr>
+<td>0.67384615</td>
+<td>0.66153846</td>
+<td>0.75076923</td>
+<td>0.74382716</td>
+<td>0.62037037</td>
+</table>
+</p>
+
+Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le accuratezze che otteniamo sono un po' più alte rispetto all'accuratezza semplice calcolata in precedenza. In questa casistica osserviamo inoltre una maggiore variazione dell'accuratezza in ciascun fold ed, in particolare, l'ultimo fold presenta un'accuratezza più bassa rispetto alle altre calcolate nei fold precedenti, ma comunque conforme con l'accuratezza classica.
+
+#### 6.1 Curva ROC
+Per quanto riguarda il Stochastic Gradient Descent, la curva ROC ottenuta è riportata in figura 4.11.
+Come possiamo osservare nell'immagine riportata, la curva ROC relativa alla classe 2 abbraccia molto bene l'angolo in alto a sinistra, con un valore dell'AUC pari a 0.98; questo significa che il modello è in grado di distinguere bene gli elementi di classe 2 dalle altre casistiche. Diversa è invece la situazione della classe 0 e della classe 1, con entrambe un valore dell'AUC pari a $0.84$: questo significa che il classificatore non è in grado di distunguere correttamente gli elementi della classe 0 da quelli della classe 1.
+
+#### 6.2 Matrice di confusione
+Riportiamo in figura 4.12 i risultati numerici della predizione mediante matrice di confusione, applicando l'insieme dei dati di test al modello addestrato.
+
+<table align="center" border="none">
+<tr>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_sgd.png" width=100%>
+Figura 4.11: Curva ROC Stochastic Gradient Descent
+  </td>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_sgd.png" width=100%>
+Figura 4.12: Matrice di confusione Stochastic Gradient Descent
+</td>
+</tr>
+</table>
+
+Come possiamo vedere nella matrice di confusione, il modello è in grado di distinguere abbastanza bene gli elementi di classe 2 dalle altre casistiche, con qualche incertezza. Lo stesso però non possiamo dirlo per gli elementi di classe 0 e 1: gli elementi classe 0 vengono comunque correttamente assegnati alla rispettiva classe ma, anche gli elementi di classe 1 vengono assegnati alla classe 0. Da un lato questo potrebbe essere un male perché molti guasti relativi alla classe 1 non verrebbero segnalati, dall'altro lato però l'allarme viene generato solamente in casi reali e critici, ovvero quando si verifica un guasto del 10\%. Seppur quindi sbagliando, questo classificatore risulta essere migliore del modello ottenuto con il Decision Tree, che andava a classificare gli elementi di classe 1 come di classe 2, generando molti falsi allarmi. In questo caso quindi l'allarme verrebbe generato solamente in casi di reale guasto critico.
+
+## Cross-Validation Scores
+Nell'immagine 4.13 riportiamo gli score relativi alla cross-validation riportante l'accuratezza media e la deviazione standard per ciascun classificatore utilizzato
+
+<p align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/cross_val_scores.png" height=375></p> 
+<p align="center">Figura 4.13: Cross-Validation Scores</p>
+
+Come possiamo osservare dal grafico a barre, viene riportata l'accuratezza media con relativo errore, riguardante la variazione delle accuratezze. L'errore minore è presente nel Decision Tree e nel Random Forest, rappresentante il fatto che l'accuratezza dei vari fold non si discosta dal valore dell'accuratezza media riportata. Il Logistic Regression e il Support Vector Machine hanno comunque un errore del tutto accettabile. Un discorso diverso viene invece fatto per il Multi Layer Perceptron ed il Stochastic Gradient Descent, aventi entrambi un errore abbastanza significativo, conseguenza del fatto che hanno un'accuratezza del tutto variabile per ciascun fold. I risultati migliori li otteniamo per il Random Forest, sia in termini di accuratezza migliore che in termini di variabilità delle accuratezze in ciascun fold.
+
+## Conclusioni e Sviluppi futuri
+Tale progetto pone le basi per il miglioramento e lo sviluppo di utilità che possano facilitare l'utilizzo dei modelli di classificazione sviluppati. Vi sono ancora diversi elementi che possono essere introdotti al fine del perfezionamento dei modelli, come, ad esempio, la Hyperparameter Optimization. La Hyperparameter Optimization consiste nella scelta dei parametri ottimali per un modello di Machine Learning, al fine di migliorarne le performances. Ci sono diverse tecniche per ottimizzare la scelta degli iperparametri, tra queste abbiamo la Grid Search: tale tecnica consiste nell'andare a prendere un insieme dei valori per i parametri che si vogliono ottimizzare e provare tutte le possibili combinazioni, andando quindi a prendere il modello migliore risultante. Si può pensare ulteriormente ad effettuare un Model Ensembling mediante Voting Classifier: vengono combinati algoritmi di Machine Learning concettualmente differenti al fine di prevedere la classe di appartenenza dei dati passati al modello risultante dalla combinazione. Sul modello risultante dal Voting Classifier si può quindi pensare di estrarre la curva ROC, la curva Precision Recall e la Learning Curve.
+
+Alla luce di quanto detto e visto fin'ora risulta evidente come le possibilità di sviluppo e ampliamento di questo progetto siano molte, soprattutto per la realizzazione di un modello derivante dall'ensembling di più classificatori. L'esperienza di sviluppo di questo progetto si è rivelata altamente formativa e ci ha permesso di approfondire le conoscenze riguardo il rilevamento di un guasto a partire da log di volo.
+Il lavoro svolto rappresenta un importante punto di partenza e una base solida per lo sviluppo di altri progetti, inglobando altre funzionalità e ottimizzazioni prima di poter essere utilizzato su larga scala.
 
 # Autori
 
