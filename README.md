@@ -254,26 +254,25 @@ Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le
 #### 1.1 Curva ROC
 Per quanto riguarda il Logistic Regression, la curva ROC ottenuta è riportata in
 figura 4.1
+Come possiamo vedere la curva migliore è quella relativa alla classe 2 (ovvero riferito a volo con guasto al 10%) che abbraccia perfettamente l’angolo in alto a sinistra del grafico riportato, con AUC pari a 1. Anche la curva relativa alla classe 0 (nessun guasto) è buona con un’AUC pari a 0.96. Pi`u bassa `e invece la curva, e rispettivo AUC, relativamente al volo con guasto al 5%.
 
+#### 1.2 Matrice di confusione
+Riportiamo in figura 4.2 i risultati numerici della predizione mediante matrice di confusione, applicando l’insieme dei dati di test al modello addestrato.
 
-<div class="row">
-  <div class="column" style="float: left; width: 50%; padding: 5px">
-    <p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_logreg.png" width=100%></p> 
-<p align="center">Figura 4.1: Curva ROC Logistic Regression</p>
-  </div>
-<div class="column" style="float: left; width: 50%; padding: 5px">
-<p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_logreg.png" width=100%></p> 
-<p align="center">Figura 4.2: Matrice di confusione Logistic Regression</p>
-  </div>
-</div>
+<table align="center" border="none">
+<tr>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_logreg.png" width=100%>
+Figura 4.1: Curva ROC Logistic Regression
+  </td>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_logreg.png" width=100%>
+Figura 4.2: Matrice di confusione Logistic Regression
+</td>
+</tr>
+</table>
 
-
-
-<p align="center">
-<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_logreg.png" width=100%></p> 
-<p align="center">Figura 4.1: Curva ROC Logistic Regression</p>
+Come possiamo vedere, il modello è in grado di effettuare una netta distinzione tra dati appartenenti alla classe 0 (nessun guasto) e dati appartenenti alla classe 2 (guasto al 10%). Maggiore difficoltà è riscontrata nell’individuazione dei dati appartenenti alla classe 1 (guasto al 10%).
 
 # Autori
 
