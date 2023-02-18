@@ -171,7 +171,7 @@ L'obiettivo nell'utilizzo di questa variabile è verificare che i valori di Roll
 Per un maggior approfondimento sui parametri utilizzati consultare la documentazione.
 
 ## Come eseguire il nostro progetto
-Per eseguire il nostro progetto sarà sufficiente scaricare il contenuto del repository di GitHub, e poi mandare in run il file *analisi_tutti_15.ipynb*, non è necessario mandare in run gli altri file in quanto i database relativi ai vari voli sono già stati pre-processati e sono presenti nella repository.
+Per eseguire il nostro progetto sarà sufficiente scaricare il contenuto del repository di GitHub, e poi mandare in run il file *analisi_tutti_15.ipynb*, non è necessario mandare in run gli altri file in quanto i database relativi ai vari voli sono già stati pre-processati e sono presenti nella repository. Ciascun file relativo ad ogni volo per il calcolo delle feature è presente all'interno delle cartelle M1..M6, divise ognuna in ulteriori tre cartelle, relative ai log di volo considerati.
 
 ## Strumenti e metodi
 ### 1 Linguaggi e librerie
