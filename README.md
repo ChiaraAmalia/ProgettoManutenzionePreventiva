@@ -474,7 +474,7 @@ Figura 4.9: Curva ROC Support Multi Layer Perceptron
   </td>
 <td align="center">
 <img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_mlp.png" width=100%>
-Figura 4.8: Matrice di confusione Multi Layer Perceptron
+Figura 4.10: Matrice di confusione Multi Layer Perceptron
 </td>
 </tr>
 </table>
@@ -486,6 +486,59 @@ degli elementi di classe 1, in cui una discreta quantità viene assegnata errone
 alla classe 0 ed una piccola quantità alla classe 2; tutto sommato la maggior parte
 degli elementi viene assegnato alla classe corretta. Simili affermazioni possiamo
 farle per la classe 2.
+
+### 6 Stochastic Gradient Descent
+Con il Stochastic Gradient Descent riusciamo ad ottenere un'accuratezza pari al $63\%$. In questo caso il risultato dell'accuratezza è relativamente basso, in quanto il classificatore è in grado di distinguere abbastanza bene gli elementi della classe 0 (volo relativo a drone senza guasto) dagli elementi della classe 2 (volo relativo a drone con guasto al 10\%) ma, trova estrema difficoltà nel riconoscere gli elementi di classe 1 (volo relativo a drone con guasto al 5\%). Di seguito riportiamo i risultati delle accuratezze ottenute mediante cross-validation:
+
+<p align="center">
+<table border="0", align="center">
+<tr>
+<td>0.67384615</td>
+<td>0.66153846</td>
+<td>0.75076923</td>
+<td>0.74382716</td>
+<td>0.62037037</td>
+</table>
+</p>
+
+Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le accuratezze che otteniamo sono un po' più alte rispetto all'accuratezza semplice calcolata in precedenza. In questa casistica osserviamo inoltre una maggiore variazione dell'accuratezza in ciascun fold ed, in particolare, l'ultimo fold presenta un'accuratezza più bassa rispetto alle altre calcolate nei fold precedenti, ma comunque conforme con l'accuratezza classica.
+
+#### 6.1 Curva ROC
+Per quanto riguarda il Stochastic Gradient Descent, la curva ROC ottenuta è riportata in figura 4.11.
+Come possiamo osservare nell'immagine riportata, la curva ROC relativa alla classe 2 abbraccia molto bene l'angolo in alto a sinistra, con un valore dell'AUC pari a 0.98; questo significa che il modello è in grado di distinguere bene gli elementi di classe 2 dalle altre casistiche. Diversa è invece la situazione della classe 0 e della classe 1, con entrambe un valore dell'AUC pari a $0.84$: questo significa che il classificatore non è in grado di distunguere correttamente gli elementi della classe 0 da quelli della classe 1.
+
+#### 6.2 Matrice di confusione
+Riportiamo in figura 4.12 i risultati numerici della predizione mediante matrice di confusione, applicando l'insieme dei dati di test al modello addestrato.
+
+<table align="center" border="none">
+<tr>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_sgd.png" width=100%>
+Figura 4.11: Curva ROC Stochastic Gradient Descent
+  </td>
+<td align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_sgd.png" width=100%>
+Figura 4.12: Matrice di confusione Stochastic Gradient Descent
+</td>
+</tr>
+</table>
+
+Come possiamo vedere nella matrice di confusione, il modello è in grado di distinguere abbastanza bene gli elementi di classe 2 dalle altre casistiche, con qualche incertezza. Lo stesso però non possiamo dirlo per gli elementi di classe 0 e 1: gli elementi classe 0 vengono comunque correttamente assegnati alla rispettiva classe ma, anche gli elementi di classe 1 vengono assegnati alla classe 0. Da un lato questo potrebbe essere un male perché molti guasti relativi alla classe 1 non verrebbero segnalati, dall'altro lato però l'allarme viene generato solamente in casi reali e critici, ovvero quando si verifica un guasto del 10\%. Seppur quindi sbagliando, questo classificatore risulta essere migliore del modello ottenuto con il Decision Tree, che andava a classificare gli elementi di classe 1 come di classe 2, generando molti falsi allarmi. In questo caso quindi l'allarme verrebbe generato solamente in casi di reale guasto critico.
+
+## Cross-Validation Scores
+Nell'immagine 4.13 riportiamo gli score relativi alla cross-validation riportante l'accuratezza media e la deviazione standard per ciascun classificatore utilizzato
+
+<p align="center">
+<img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/cross_val_scores.png" height=375></p> 
+<p align="center">Figura 4.13: Cross-Validation Scores</p>
+
+Come possiamo osservare dal grafico a barre, viene riportata l'accuratezza media con relativo errore, riguardante la variazione delle accuratezze. L'errore minore è presente nel Decision Tree e nel Random Forest, rappresentante il fatto che l'accuratezza dei vari fold non si discosta dal valore dell'accuratezza media riportata. Il Logistic Regression e il Support Vector Machine hanno comunque un errore del tutto accettabile. Un discorso diverso viene invece fatto per il Multi Layer Perceptron ed il Stochastic Gradient Descent, aventi entrambi un errore abbastanza significativo, conseguenza del fatto che hanno un'accuratezza del tutto variabile per ciascun fold. I risultati migliori li otteniamo per il Random Forest, sia in termini di accuratezza migliore che in termini di variabilità delle accuratezze in ciascun fold.
+
+## Conclusioni e Sviluppi futuri
+Tale progetto pone le basi per il miglioramento e lo sviluppo di utilità che possano facilitare l'utilizzo dei modelli di classificazione sviluppati. Vi sono ancora diversi elementi che possono essere introdotti al fine del perfezionamento dei modelli, come, ad esempio, la Hyperparameter Optimization. La Hyperparameter Optimization consiste nella scelta dei parametri ottimali per un modello di Machine Learning, al fine di migliorarne le performances. Ci sono diverse tecniche per ottimizzare la scelta degli iperparametri, tra queste abbiamo la Grid Search: tale tecnica consiste nell'andare a prendere un insieme dei valori per i parametri che si vogliono ottimizzare e provare tutte le possibili combinazioni, andando quindi a prendere il modello migliore risultante. Si può pensare ulteriormente ad effettuare un Model Ensembling mediante Voting Classifier: vengono combinati algoritmi di Machine Learning concettualmente differenti al fine di prevedere la classe di appartenenza dei dati passati al modello risultante dalla combinazione. Sul modello risultante dal Voting Classifier si può quindi pensare di estrarre la curva ROC, la curva Precision Recall e la Learning Curve.
+
+Alla luce di quanto detto e visto fin'ora risulta evidente come le possibilità di sviluppo e ampliamento di questo progetto siano molte, soprattutto per la realizzazione di un modello derivante dall'ensembling di più classificatori. L'esperienza di sviluppo di questo progetto si è rivelata altamente formativa e ci ha permesso di approfondire le conoscenze riguardo il rilevamento di un guasto a partire da log di volo.
+Il lavoro svolto rappresenta un importante punto di partenza e una base solida per lo sviluppo di altri progetti, inglobando altre funzionalità e ottimizzazioni prima di poter essere utilizzato su larga scala.
 
 # Autori
 
