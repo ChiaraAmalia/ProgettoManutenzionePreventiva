@@ -450,7 +450,7 @@ validation:
 
 Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le accuratezze che otteniamo sono relativamente alte. In questa casistica osserviamo
 però una maggiore variazione dell’accuratezza rispetto ai classificatori precedenti,
-soprattutto perch ́e, per quanto riguarda la quarta iterazione, otteniamo un’accuratezza di circa 0.73, rispetto alle accuratezze degli altri fold che sono più alte ed
+soprattutto perchè, per quanto riguarda la quarta iterazione, otteniamo un’accuratezza di circa 0.73, rispetto alle accuratezze degli altri fold che sono più alte ed
 anche più conformi all’accuratezza classica.
 
 #### 5.1 Curva ROC
