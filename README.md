@@ -255,32 +255,14 @@ Come possiamo vedere dai risultati ottenuti, per ciascun test fatto sui fold, le
 Per quanto riguarda il Logistic Regression, la curva ROC ottenuta è riportata in
 figura 4.1
 
-<style>
-* {
-  box-sizing: border-box;
-}
-
-.column {
-  float: left;
-  width: 50%;
-  padding: 5px;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-</style>
 
 <div class="row">
-  <div class="column">
+  <div class="column" style="float: left; width: 50%; padding: 5px">
     <p align="center">
 <img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/curva_roc_logreg.png" width=100%></p> 
 <p align="center">Figura 4.1: Curva ROC Logistic Regression</p>
   </div>
-  <div class="column">
+<div class="column" style="float: left; width: 50%; padding: 5px">
 <p align="center">
 <img src="https://github.com/ChiaraAmalia/ProgettoManutenzionePreventiva/blob/main/immagini/ConfMat_logreg.png" width=100%></p> 
 <p align="center">Figura 4.2: Matrice di confusione Logistic Regression</p>
