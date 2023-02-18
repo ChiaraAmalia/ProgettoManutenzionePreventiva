@@ -103,9 +103,9 @@ In questa fase, avendo ottenuto tutte le variabili e i relativi parametri utili 
 ###### Unione delle tabelle
 Il primo passo di questa fase è stato unire tutte le tabelle, risultanti dalle precedenti operazioni, per fare ciò abbiamo sfruttato il metodo di pandas *merge_ordered()*, progettata per dati ordinati come dati di serie temporali e che semplicemente esegue l'unione di questi dati (mantenendo l'ordine).
 
-In seguito abbiamo proceduto andando ad imputare i valori mancanti e per fare ciò abbiamo utilizzato un altro metodo di pandas, ovvero *DataFrame.fillna()* che permette di andare a riempire i valori mancanti con il metodo specificato tra le parentesi.
+In seguito abbiamo proceduto andando ad imputare i valori mancanti e per fare ciò abbiamo utilizzato un altro metodo di pandas, ovvero *fillna()* che permette di andare a riempire i valori mancanti con il metodo specificato tra le parentesi.
 
-Come è possibile vedere nel codice riportato sotto, noi abbiamo applicato tale funzione due volte, una prima volta con il metodo *"ffill"* che sostanzialmente propaga l'ultima osservazione valida in avanti fino alla prossima valida, e successivamente, per riempire i valori che in questo modo rimanevano vuoti, con il metodo *"bfill"* che utilizza ,l'osservazione valida successiva per colamre le lacune (lavora all'indietro).
+Come è possibile vedere nel codice riportato sotto, noi abbiamo applicato tale funzione due volte, una prima volta con il metodo *"ffill"* che sostanzialmente propaga l'ultima osservazione valida in avanti fino alla prossima valida, e successivamente, per riempire i valori che in questo modo rimanevano vuoti, con il metodo *"bfill"* che utilizza l'osservazione valida successiva per colamre le lacune (lavora all'indietro).
 
 Dopo aver unito tutti i parametri delle tabelle, si è proceduto con la sincronizzazione dei tempi del volo, impostando a 0 $\mu$s la prima riga della tabella, indicando il fatto che il volo inizi in quell'istante di tempo, andando quindi a sottrarre a ciascuna riga, relativamente alla colonna dei tempi, il vaore della prima. 
 
